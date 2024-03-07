@@ -4,7 +4,6 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 
-
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,12 +12,10 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
-  
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Object representing the request body
@@ -27,17 +24,17 @@ function Signup() {
     // Make an axios request to the API
     // If POST request is successful redirect to login page
     // If the request resolves with an error, set the error message in the state
-    axios.post(`${API_URL}/auth/signup`, requestBody)
+    axios
+      .post(`${API_URL}/auth/signup`, requestBody)
       .then(() => {
         navigate("/login");
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      })
+        console.log(error);
+        /* setErrorMessage(errorDescription); */
+      });
   };
 
-  
   return (
     <div className="signup p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto">
       <div className="flex justify-center bg-white items-center mb-4 pt-8 absolute top-0 left-0 right-0 py-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 border-b border-gray-300 shadow-sm"></div>
@@ -63,7 +60,7 @@ function Signup() {
           onChange={handleName}
           className="border rounded p-2 w-full mb-6"
           autoComplete="off"
-        />   
+        />
         <label
           htmlFor="email"
           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
@@ -94,7 +91,7 @@ function Signup() {
           onChange={handlePassword}
           className="border rounded p-2 w-full mb-6"
           autoComplete="off"
-        />     
+        />
 
         <button
           type="submit"
@@ -109,7 +106,7 @@ function Signup() {
       <p className="mt-10 mb-2">Already have an account?</p>
       <Link to={"/login"}> Log in</Link>
     </div>
-  )
+  );
 }
 
 export default Signup;
