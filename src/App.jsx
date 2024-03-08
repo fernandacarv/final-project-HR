@@ -1,19 +1,18 @@
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
-=======
->>>>>>> e431eb0772cd869b771c6018e955b11f03d6ccbb
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import EmployeeDetailsPage from "./Pages/EmployeeDetailsPage";
+import MainFormEmployees from "./Components/MainFormEmployees";
+import CreateEmployeePage from "./Pages/CreateEmployeePage";
+import { MainFormProviderWrapper } from "./Context/mainform.context";
 
 function App() {
   return (
     <div>
       <Routes>
-<<<<<<< HEAD
         <Route
           path="/signup"
           element={<Signup />}
@@ -24,12 +23,11 @@ function App() {
         />
         <Route
           path="/newemployee"
-          element={<CreateEmployeePage />}></Route>
-=======
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/:id" element={<EmployeeDetailsPage />} />
->>>>>>> e431eb0772cd869b771c6018e955b11f03d6ccbb
+          element={
+            <MainFormProviderWrapper>
+              <CreateEmployeePage />
+            </MainFormProviderWrapper>
+          }></Route>
       </Routes>
     </div>
   );

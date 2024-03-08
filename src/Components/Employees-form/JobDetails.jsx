@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function JobDetails({ onNext }) {
+function JobDetails({ onNext, onBack }) {
   const [formData, setFormData] = useState({
     jobTitle: "",
     departmentID: "",
@@ -25,6 +25,11 @@ function JobDetails({ onNext }) {
 
   const handleNext = () => {
     onNext(); // Notify parent component about next button click
+    console.log(formData);
+  };
+
+  const handleBack = () => {
+    onBack();
   };
 
   return (
@@ -119,6 +124,7 @@ function JobDetails({ onNext }) {
         checked={formData.retirementPlans}
         onChange={handleChange}
       />
+      <button onClick={handleBack}>Go back</button>
       <button onClick={handleNext}>Next: Emergency Contact</button>
     </div>
   );

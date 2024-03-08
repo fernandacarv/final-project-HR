@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -79,8 +80,7 @@ function AuthProviderWrapper(props) {
         authenticateUser,
         logOutUser,
         authError,
-      }}
-    >
+      }}>
       {props.children}
     </AuthContext.Provider>
   );

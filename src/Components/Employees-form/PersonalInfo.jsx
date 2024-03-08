@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-function PersonalInfo({ onNext }) {
+function PersonalInfo({ onNext, onChange }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -15,8 +14,6 @@ function PersonalInfo({ onNext }) {
     postalCode: "",
   });
 
-
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -26,7 +23,9 @@ function PersonalInfo({ onNext }) {
   };
 
   const handleNext = () => {
+    onChange(formData);
     onNext();
+    console.log(formData);
   };
 
   return (
@@ -113,6 +112,7 @@ function PersonalInfo({ onNext }) {
         onChange={handleChange}
         className="form-control"
       />
+
       <button onClick={handleNext}>Next: Profile Setup</button>
     </div>
   );

@@ -1,101 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import JobDetails from "./Employees-form/JobDetails";
 import EmergencyContact from "./Employees-form/EmergencyContact";
 import PersonalInfo from "./Employees-form/PersonalInfo";
 // import ProfileSetup from "./Employees-form/Profile-Setup";
 import Skills from "./Employees-form/Skills";
+import { MainForm } from "../Context/mainform.context";
 
+const API_URL = "https://localhost:5005";
 function MainFormEmployees() {
-  const [formData, setFormData] = useState({
-    jobDetails: {
-      jobTitle: "",
-      departmentID: "",
-      managerID: "",
-      startDate: "",
-      endDate: "",
-      salary: "",
-      currency: "",
-      weeklyWorkHours: "",
-      healthInsurance: false,
-      retirementPlans: false,
-    },
-    emergencyContact: {
-      name: "",
-      phoneNumber: "",
-      relationship: "",
-    },
-    personalInfo: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      dateOfBirth: "",
-      gender: "",
-      phoneNumber: "",
-      streetAddress: "",
-      city: "",
-      stateProvince: "",
-      postalCode: "",
-    }, // Initialize personalInfo object
-    /*   profileSetup: {
-      
-    } */ // Initialize profileSetup object
-    skills: {
-      skills: "",
-      education: "",
-      performanceReviews: "",
-      goals: "",
-    },
-  });
-  const [step, setStep] = useState(1); // For tracking form steps
-
-  const handleChange = (data) =>
-    setFormData((prevData) => ({
-      ...prevData,
-      skills: data,
-      personalInfo: data,
-      jobDetails: data,
-      emergencyContact: data,
-    }));
-  /*
-  const handleJobDetailsChange = (data) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      jobDetails: data,
-    }));
-  };
-
-  const handleSkillsChange = (data) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      Skills: data,
-    }));
-  };
-
-  /*const handleProfileSetupChange = (data) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      profileSetup: data,
-    }));
-  }; 
-
-  const handleEmergencyContactChange = (data) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      emergencyContact: data,
-    }));
-  }; */
-
-  const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
-  console.log(step)
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission with formData
-    console.log(formData);
-  };
+  const {
+    step,
+    handleSubmit,
+    handleBack,
+    handleNext,
+    handleProfileChange,
+    handleJobDetailsChange,
+    handleEmergencyContactChange,
+    handleSkillsChange,
+  } = useContext(MainForm);
 
   const totalSteps = 4; // Total number of steps in the form
 
@@ -103,40 +26,33 @@ function MainFormEmployees() {
     <form onSubmit={handleSubmit}>
       {step === 1 && (
         <PersonalInfo
-          formData={formData.personalInfo}
-          onChange={handleSubmit}
+          onChange={handleProfileChange}
           onNext={handleNext}
         />
       )}
-      {/*{step === 2 && (
-        <ProfileSetup
-          onChange={handleProfileSetupChange}
-          onNext={handleNext}
-      /> 
-      )} */}
       {step === 2 && (
         <JobDetails
-          formData={formData.jobDetails}
-          onChange={handleSubmit}
+          onChange={handleJobDetailsChange}
           onNext={handleNext}
+          onBack={handleBack}
         />
       )}
       {step === 3 && (
         <EmergencyContact
-          formData={formData.emergencyContact}
-          onChange={handleSubmit}
+          onChange={handleEmergencyContactChange}
           onNext={handleNext}
+          onBack={handleBack}
         />
       )}
       {step === 4 && (
         <Skills
-          formData={formData.skills}
-          onChange={handleSubmit}
+          onChange={handleSkillsChange}
           onNext={handleNext}
+          onBack={handleBack}
         />
       )}
       {/* Check if it's not the last step to show submit button */}
-      {step < totalSteps && <button type="submit">Submit</button>}
+      {step == totalSteps && <button type="submit">Submit</button>}
     </form>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EmergencyContact({ onNext }) {
+function EmergencyContact({ onNext, onBack }) {
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
@@ -12,12 +12,16 @@ function EmergencyContact({ onNext }) {
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-    onChange(formData); // Notify parent component about change
+    })); // Notify parent component about change
   };
 
   const handleNext = () => {
     onNext();
+    console.log(formData);
+  };
+
+  const handleBack = () => {
+    onBack();
   };
 
   return (
@@ -47,6 +51,7 @@ function EmergencyContact({ onNext }) {
         onChange={handleChange}
         className="form-control"
       />
+      <button onClick={handleBack}>Go back</button>
       <button onClick={handleNext}>Next: Skills & Performance Metrics</button>
     </div>
   );

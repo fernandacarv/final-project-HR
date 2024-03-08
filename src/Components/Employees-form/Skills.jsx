@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
-function Skills({ onChange, onSubmit }) {
+function Skills({ onChange, onSubmit, onBack }) {
   const [formData, setFormData] = useState({
     skills: "",
     education: "",
@@ -8,19 +9,26 @@ function Skills({ onChange, onSubmit }) {
     goals: "",
   });
 
+  // Side effect to execute when formData changes
+  useEffect(() => {
+    onChange(formData); // Pass updated formData to parent
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    onChange({ ...formData, [name]: value }); // Pass updated formData to parent
   };
 
-  const handleSubmit = () => {
+  const handleBack = () => {
+    onBack();
+  };
+
+/*   const handleSubmit = () => {
     onSubmit(formData); // Pass formData to parent when submitting
-  };
-
+  }; */
   return (
     <div>
       <h4>Skills & Performance Metrics</h4>
@@ -56,7 +64,8 @@ function Skills({ onChange, onSubmit }) {
         onChange={handleChange}
         className="form-control"
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleBack}>Go back</button>
+      {/* <button onClick={handleSubmit}>Submit</button> */}
     </div>
   );
 }
