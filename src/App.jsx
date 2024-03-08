@@ -7,11 +7,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-<<<<<<< HEAD
-import CreateEmployeePage from "./Pages/CreateEmployeePage";
-=======
 import EmployeeDetailsPage from "./Pages/EmployeeDetailsPage";
->>>>>>> e431eb0772cd869b771c6018e955b11f03d6ccbb
 
 function App() {
   return (

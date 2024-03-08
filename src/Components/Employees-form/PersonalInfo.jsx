@@ -15,13 +15,8 @@ function PersonalInfo({ onNext }) {
     postalCode: "",
   });
 
-  console.log(formData);
 
-  /*   const handleChange = (data) =>
-    setFormData((prevData) => ({
-      ...prevData,
-      personalInfo: data,
-    })); */
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

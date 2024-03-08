@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function JobDetails({ handleChange, onNext }) {
+function JobDetails({ onNext }) {
   const [formData, setFormData] = useState({
     jobTitle: "",
     departmentID: "",
@@ -14,15 +14,14 @@ function JobDetails({ handleChange, onNext }) {
     retirementPlans: false,
   });
 
-  /*const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
     setFormData((prevData) => ({
       ...prevData,
       [name]: newValue,
     }));
-    onChange(formData); // Notify parent component about change
-  }; */
+  };
 
   const handleNext = () => {
     onNext(); // Notify parent component about next button click
