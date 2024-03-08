@@ -28,6 +28,12 @@ function App() {
               <CreateEmployeePage />
             </MainFormProviderWrapper>
           }></Route>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/newemployee" element={<CreateEmployeePage />}></Route>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/:id" element={<EmployeeDetailsPage />} />
       </Routes>
     </div>
   );
