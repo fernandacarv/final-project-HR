@@ -4,22 +4,52 @@ function PersonalInfo({ onNext, onChange }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
     dateOfBirth: "",
     gender: "",
-    phoneNumber: "",
-    streetAddress: "",
-    city: "",
-    stateProvince: "",
-    postalCode: "",
+    contactInformation: { emailAddress: "", phoneNumber: "" },
+    address: { streetAddress: "", city: "", stateProvince: "", postalCode: "" },
+  });
+
+  const [employee, setEmployee] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    gender: "",
+    contactInformation: { emailAddress: "", phoneNumber: "" },
+    address: { streetAddress: "", city: "", stateProvince: "", postalCode: "" },
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+
+    // If the changed property is part of a nested object
+    if (name.includes(".")) {
+      const [parent, child] = name.split(".");
+      setFormData((prevData) => ({
+        ...prevData,
+        [parent]: {
+          ...prevData[parent],
+          [child]: value,
+        },
+      }));
+      setEmployee((prevData) => ({
+        ...prevData,
+        [parent]: {
+          ...prevData[parent],
+          [child]: value,
+        },
+      }));
+    } else {
+      // If the changed property is at the top level
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+      setEmployee((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }))
+    }
   };
 
   const handleNext = () => {
@@ -51,8 +81,8 @@ function PersonalInfo({ onNext, onChange }) {
       <label htmlFor="email">Email:</label>
       <input
         type="text"
-        name="email"
-        value={formData.email}
+        name="contactInformation.emailAddress"
+        value={formData.contactInformation.emailAddress}
         onChange={handleChange}
         className="form-control"
       />
@@ -75,40 +105,40 @@ function PersonalInfo({ onNext, onChange }) {
       <label htmlFor="phoneNumber">Phone Number:</label>
       <input
         type="text"
-        name="phoneNumber"
-        value={formData.phoneNumber}
+        name="contactInformation.phoneNumber"
+        value={formData.contactInformation.phoneNumber}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="streetAddress">Street Address:</label>
       <input
         type="text"
-        name="streetAddress"
-        value={formData.streetAddress}
+        name="address.streetAddress"
+        value={formData.address.streetAddress}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="city">City:</label>
       <input
         type="text"
-        name="city"
-        value={formData.city}
+        name="address.city"
+        value={formData.address.city}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="stateProvince">State Province:</label>
       <input
         type="text"
-        name="stateProvince"
-        value={formData.stateProvince}
+        name="address.stateProvince"
+        value={formData.address.stateProvince}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="postalCode">Postal Code:</label>
       <input
         type="text"
-        name="postalCode"
-        value={formData.postalCode}
+        name="address.postalCode"
+        value={formData.address.postalCode}
         onChange={handleChange}
         className="form-control"
       />

@@ -1,31 +1,65 @@
 import React, { useState } from "react";
 
-function JobDetails({ onNext, onBack }) {
+function JobDetails({ onNext, onBack, onChange }) {
   const [formData, setFormData] = useState({
-    jobTitle: "",
-    departmentID: "",
-    managerID: "",
-    startDate: "",
-    endDate: "",
-    salary: "",
-    currency: "",
-    weeklyWorkHours: "",
-    healthInsurance: false,
-    retirementPlans: false,
+    jobDetails: {
+      jobTitle: "",
+      departmentID: "",
+      managerID: "",
+      startDate: "",
+      endDate: "",
+    },
+    salaryInformation: { salary: "", currency: "" },
+    workHours: { weeklyWorkHours: "" },
+    benefitsAndPerks: { healthInsurance: "", retirementPlans: "" },
+  });
+
+  const [employee, setEmployee] = useState({
+    jobDetails: {
+      jobTitle: "",
+      departmentID: "",
+      managerID: "",
+      startDate: "",
+      endDate: "",
+    },
+    salaryInformation: { salary: "", currency: "" },
+    workHours: { weeklyWorkHours: "" },
+    benefitsAndPerks: { healthInsurance: "", retirementPlans: "" },
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: newValue,
-    }));
+    const { name, value } = e.target;
+
+    // If the changed property is part of a nested object
+    if (name.includes(".")) {
+      const [parent, child] = name.split(".");
+      setFormData((prevData) => ({
+        ...prevData,
+        [parent]: {
+          ...prevData[parent],
+          [child]: value,
+        },
+      })),
+      setEmployee((prevData) => ({
+        ...prevData,
+        [parent]: {
+          ...prevData[parent],
+          [child]: value,
+        },
+      }))
+    } else {
+      // If the changed property is at the top level
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleNext = () => {
-    onNext(); // Notify parent component about next button click
-    console.log(formData);
+    onChange(formData);
+    onChange(employee)
+    onNext();
   };
 
   const handleBack = () => {
@@ -38,16 +72,15 @@ function JobDetails({ onNext, onBack }) {
       <label htmlFor="job-title">Job Title:</label>
       <input
         type="text"
-        name="jobTitle"
-        value={formData.jobTitle}
+        name="jobDetails.jobTitle"
+        value={formData.jobDetails.jobTitle}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="departmentID">Department ID:</label>
       <select
-        required
-        name="departmentID"
-        value={formData.departmentID}
+        name="jobDetails.departmentID"
+        value={formData.jobDetails.departmentID}
         onChange={handleChange}
         className="form-control">
         <option
@@ -65,65 +98,79 @@ function JobDetails({ onNext, onBack }) {
       <label htmlFor="managerID">Manager ID:</label>
       <input
         type="text"
-        name="managerID"
-        value={formData.managerID}
+        name="jobDetails.managerID"
+        value={formData.jobDetails.managerID}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="startDate">Start Date:</label>
       <input
         type="date"
-        name="startDate"
-        value={formData.startDate}
+        name="jobDetails.startDate"
+        value={formData.jobDetails.startDate}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="endDate">End Date:</label>
       <input
         type="date"
-        name="endDate"
-        value={formData.endDate}
+        name="jobDetails.endDate"
+        value={formData.jobDetails.endDate}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="salary">Salary:</label>
       <input
         type="number"
-        name="salary"
-        value={formData.salary}
+        name="salaryInformation.salary"
+        value={formData.salaryInformation.salary}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="currency">Currency:</label>
       <input
         type="text"
-        name="currency"
-        value={formData.currency}
+        name="salaryInformation.currency"
+        value={formData.salaryInformation.currency}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="weeklyWorkHours">Weekly Work Hours:</label>
       <input
         type="number"
-        name="weeklyWorkHours"
-        value={formData.weeklyWorkHours}
+        name="workHours.weeklyWorkHours"
+        value={formData.workHours.weeklyWorkHours}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="healthInsurance">Health Insurance</label>
-      <input
-        type="checkbox"
-        name="healthInsurance"
-        checked={formData.healthInsurance}
+      <select
+        name="benefitsAndPerks.healthInsurance"
+        value={formData.benefitsAndPerks.healthInsurance}
         onChange={handleChange}
-      />
+        className="form-control">
+        <option
+          value=""
+          disabled>
+          Select
+        </option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
       <label htmlFor="retirementPlans">Retirement Plans</label>
-      <input
-        type="checkbox"
-        name="retirementPlans"
-        checked={formData.retirementPlans}
+      <select
+        name="benefitsAndPerks.retirementPlans"
+        value={formData.benefitsAndPerks.retirementPlans}
         onChange={handleChange}
-      />
+        className="form-control">
+        <option
+          value=""
+          disabled>
+          Select
+        </option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
       <button onClick={handleBack}>Go back</button>
       <button onClick={handleNext}>Next: Emergency Contact</button>
     </div>

@@ -1,23 +1,39 @@
 import React, { useState } from "react";
 
-function EmergencyContact({ onNext, onBack }) {
+function EmergencyContact({ onNext, onBack, onChange }) {
   const [formData, setFormData] = useState({
-    name: "",
-    phoneNumber: "",
-    relationship: "",
+    emergencyContact: { name: "", phoneNumberEmergency: "", relationship: "" },
   });
 
+  const [employee, setEmployee] = useState({
+    emergencyContact: { name: "", phoneNumberEmergency: "", relationship: "" },
+  });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    })); // Notify parent component about change
+
+    // If the changed property is part of a nested object
+    if (name.includes(".")) {
+      const [parent, child] = name.split(".");
+      setFormData((prevData) => ({
+        ...prevData,
+        [parent]: {
+          ...prevData[parent],
+          [child]: value,
+        },
+      }));
+    } else {
+      // If the changed property is at the top level
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleNext = () => {
+    onChange(formData);
+    onChange(employee);
     onNext();
-    console.log(formData);
   };
 
   const handleBack = () => {
@@ -30,7 +46,7 @@ function EmergencyContact({ onNext, onBack }) {
       <label htmlFor="EmergencyContactName">Name:</label>
       <input
         type="text"
-        name="name"
+        name="emergencyContact.name"
         value={formData.name}
         onChange={handleChange}
         className="form-control"
@@ -38,15 +54,15 @@ function EmergencyContact({ onNext, onBack }) {
       <label htmlFor="phoneNumber">Phone Number</label>
       <input
         type="text"
-        name="phoneNumber"
-        value={formData.phoneNumber}
+        name="emergencyContact.phoneNumberEmergency"
+        value={formData.phoneNumberEmergency}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="">Relationship:</label>
       <input
         type="text"
-        name="relationship"
+        name="emergencyContact.relationship"
         value={formData.relationship}
         onChange={handleChange}
         className="form-control"
