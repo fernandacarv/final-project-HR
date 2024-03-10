@@ -33,7 +33,7 @@ function MainFormProviderWrapper(props) {
   const handleProfileChange = (data) => {
     setFormData((prevData) => ({
       ...prevData,
-      profile: data,
+      ...data,
     }));
   };
 
@@ -87,7 +87,8 @@ function MainFormProviderWrapper(props) {
         handleSubmit,
         handleBack,
         handleNext,
-      }}>
+      }}
+    >
       {props.children}
     </MainForm.Provider>
   );
