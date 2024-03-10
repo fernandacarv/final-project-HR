@@ -8,7 +8,7 @@ import EmployeeDetailsPage from "./Pages/EmployeeDetailsPage";
 import MainFormEmployees from "./Components/MainFormEmployees";
 import CreateEmployeePage from "./Pages/CreateEmployeePage";
 import { MainFormProviderWrapper } from "./Context/mainform.context";
-
+import EmployeeEditPage from "./Pages/EmployeeEditPage";
 function App() {
   return (
     <div>
@@ -28,12 +28,37 @@ function App() {
               <CreateEmployeePage />
             </MainFormProviderWrapper>
           }></Route>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/newemployee" element={<CreateEmployeePage />}></Route>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/:id" element={<EmployeeDetailsPage />} />
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+        <Route
+          path="/newemployee"
+          element={<CreateEmployeePage />}></Route>
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+        <Route
+          path="employees/:id"
+          element={<EmployeeDetailsPage />}
+        />
+        <Route
+          path="employees/edit/:id"
+          element={
+            <MainFormProviderWrapper>
+              <EmployeeEditPage />
+            </MainFormProviderWrapper>
+          }
+        />
       </Routes>
     </div>
   );

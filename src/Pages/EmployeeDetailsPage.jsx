@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 export default function EmployeeDetailsPage() {
   const [employee, setEmployee] = useState({});
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSingleEmployee = async () => {
@@ -23,12 +25,19 @@ export default function EmployeeDetailsPage() {
   useEffect(() => {
     document.title = `${employee.firstName}`;
   }, [employee]);
+
+  const handleDelete = () => {
+    axios
+      .delete(`${API_URL}/api/employees/${id}`)
+      .then(() => navigate(`/`))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <section className="p-8 md:py-0 max-w-7xl mx-auto">
       <div
         key={employee.firstName}
-        className="grid grid-cols-1 gap-8 md:grid-cols-2 md:place-items-center md:h-screen"
-      >
+        className="grid grid-cols-1 gap-8 md:grid-cols-2 md:place-items-center md:h-screen">
         <article>
           <img />
         </article>
@@ -141,31 +150,15 @@ export default function EmployeeDetailsPage() {
                 : "N/A"}
             </li>
           </ul>
-
-          {/* {item.borders && (
-              <>
-                <h3 className="text-gray-900 font-bold text-lg mb-2 dark:text-white">
-                  Borders:
-                </h3>
-                <ul className="flex flex-wrap items-start justify-start gap-2">
-                  {item.borders.map((border, index) => (
-                    <li
-                      key={index}
-                      className="bg-white p-2 rounded text-xs tracking-wide shadow dark:bg-gray-800 dark:text-gray-400 text-gray-700"
-                    >
-                      {border}
-                    </li> 
-                  ))}
-                </ul>
-              </>
-            )}*/}
-
           <Link
             to="/"
-            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
-          >
+            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">
             &larr; Back
           </Link>
+          <Link>
+            <button>Edit Employee</button>
+          </Link>
+          <button onClick={handleDelete}>Delete Employee</button>
         </article>
       </div>
     </section>
