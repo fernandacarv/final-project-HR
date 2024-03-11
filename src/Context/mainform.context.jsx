@@ -33,23 +33,6 @@ function MainFormProviderWrapper(props) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  /* const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const requestBody = {
-      ...formData,
-    };
-    console.log(requestBody);
-
-    axios
-      .post(`${API_URL}/api/employees`, requestBody)
-      .then((response) => {
-        const id = response.data._id;
-        navigate(`/employees/${id}`);
-      })
-      .catch((error) => console.log(error));
-  }; */
-
   useEffect(() => {
     const getEmployee = () => {
       if (id) {
@@ -66,7 +49,6 @@ function MainFormProviderWrapper(props) {
     };
 
     getEmployee();
-    console.log(employee);
   }, [id]);
 
   const handleRequest = (method) => (e) => {
@@ -75,7 +57,6 @@ function MainFormProviderWrapper(props) {
     const requestBody = {
       ...formData,
     };
-    console.log(requestBody);
 
     const apiEndpoint = id
       ? `${API_URL}/api/employees/${id}`
