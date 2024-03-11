@@ -7,7 +7,6 @@ import PersonalInfo from "./Employees-form/PersonalInfo";
 import Skills from "./Employees-form/Skills";
 import { MainForm } from "../Context/mainform.context";
 
-const API_URL = "https://localhost:5005";
 function MainFormEmployees() {
   const {
     step,
@@ -25,10 +24,7 @@ function MainFormEmployees() {
   return (
     <form onSubmit={handleSubmit}>
       {step === 1 && (
-        <PersonalInfo
-          onChange={handleProfileChange}
-          onNext={handleNext}
-        />
+        <PersonalInfo onChange={handleProfileChange} onNext={handleNext} />
       )}
       {step === 2 && (
         <JobDetails
@@ -52,7 +48,7 @@ function MainFormEmployees() {
         />
       )}
       {/* Check if it's not the last step to show submit button */}
-      {step == totalSteps && <button type="submit">Submit</button>}
+      {step === totalSteps && <button type="submit">Submit</button>}
     </form>
   );
 }
