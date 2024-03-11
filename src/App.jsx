@@ -9,9 +9,13 @@ import MainFormEmployees from "./Components/MainFormEmployees";
 import CreateEmployeePage from "./Pages/CreateEmployeePage";
 import { MainFormProviderWrapper } from "./Context/mainform.context";
 import EmployeeEditPage from "./Pages/EmployeeEditPage";
+import NavbarComponent from "./Components/Navbar";
+import Footer from "./Components/Footer";
+
 function App() {
   return (
     <div>
+      <NavbarComponent />
       <Routes>
         <Route
           path="/signup"
@@ -60,6 +64,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
