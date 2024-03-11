@@ -33,7 +33,7 @@ function MainFormProviderWrapper(props) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const handleSubmit = (e) => {
+  /* const handleSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = {
@@ -48,37 +48,45 @@ function MainFormProviderWrapper(props) {
         navigate(`/employees/${id}`);
       })
       .catch((error) => console.log(error));
-  };
+  }; */
 
   useEffect(() => {
     const getEmployee = () => {
-      axios
-        .get(`${API_URL}/api/employees/${id}`)
-        .then((response) => {
-          console.log(response.data);
-          const employeeData = response.data;
-          setEmployee(employeeData);
-        })
-        .catch((error) => console.log(error));
+      if (id) {
+        axios
+          .get(`${API_URL}/api/employees/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            const employeeData = response.data;
+            setEmployee(employeeData);
+            setFormData(employeeData);
+          })
+          .catch((error) => console.log(error));
+      }
     };
 
     getEmployee();
-    console.log(employee)
-  }, []);
+    console.log(employee);
+  }, [id]);
 
-  const handleUpdate = (e) => {
+  const handleRequest = (method) => (e) => {
     e.preventDefault();
 
     const requestBody = {
-      ...employee,
+      ...formData,
     };
     console.log(requestBody);
 
+    const apiEndpoint = id
+      ? `${API_URL}/api/employees/${id}`
+      : `${API_URL}/api/employees`;
+
     axios
-      .put(`${API_URL}/api/employees/${id}`, requestBody)
+      .request({ method, url: apiEndpoint, data: requestBody })
       .then((response) => {
         const id = response.data._id;
-        navigate(`/employees/${id}`);
+        const routePath = id ? `/employees/${id}` : "/employees";
+        navigate(routePath);
       })
       .catch((error) => console.log(error));
   };
@@ -137,11 +145,12 @@ function MainFormProviderWrapper(props) {
         handleSkillsChange,
         handleProfileSetupChange,
         handleEmergencyContactChange,
-        handleSubmit,
+        handleSubmit: handleRequest("POST"),
+        handleUpdate: handleRequest("PUT"),
         handleBack,
         handleNext,
-        handleUpdate,
-      }}>
+      }}
+    >
       {props.children}
     </MainForm.Provider>
   );

@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MainForm } from "../../Context/mainform.context";
 
 function PersonalInfo({ onNext, onChange }) {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    gender: "",
-    contactInformation: { emailAddress: "", phoneNumber: "" },
-    address: { streetAddress: "", city: "", stateProvince: "", postalCode: "" },
-  });
+  const { formData, setFormData } = useContext(MainForm);
 
-  const [employee, setEmployee] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    gender: "",
-    contactInformation: { emailAddress: "", phoneNumber: "" },
-    address: { streetAddress: "", city: "", stateProvince: "", postalCode: "" },
-  });
+  useEffect(() => {
+    // Assuming you want to fetch and set the data when the component mounts
+    const fetchData = async () => {
+      // Fetch your data and update the form data using setFormData
+      // Example: const response = await fetchYourData();
+      // setFormData(response.data);
+    };
+
+    fetchData();
+  }, [setFormData]);
+
+  const formatDate = (value) => {
+    return value instanceof Date
+      ? value.toLocaleDateString("en-CA") // Adjust the locale as needed
+      : value;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,33 +31,21 @@ function PersonalInfo({ onNext, onChange }) {
         ...prevData,
         [parent]: {
           ...prevData[parent],
-          [child]: value,
-        },
-      }));
-      setEmployee((prevData) => ({
-        ...prevData,
-        [parent]: {
-          ...prevData[parent],
-          [child]: value,
+          [child]: name.includes("date") ? formatDate(new Date(value)) : value,
         },
       }));
     } else {
       // If the changed property is at the top level
       setFormData((prevData) => ({
         ...prevData,
-        [name]: value,
+        [name]: name.includes("date") ? formatDate(new Date(value)) : value,
       }));
-      setEmployee((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }))
     }
   };
 
   const handleNext = () => {
     onChange(formData);
     onNext();
-    console.log(formData);
   };
 
   return (
@@ -63,12 +53,12 @@ function PersonalInfo({ onNext, onChange }) {
       <h4>Personal Information</h4>
       <label htmlFor="firstName">First Name:</label>
       <input
+        required
         type="text"
-        id="firstName"
         name="firstName"
         value={formData.firstName}
         onChange={handleChange}
-        className="form-control"
+        className={`form-control`}
       />
       <label htmlFor="lastName">Last Name:</label>
       <input
@@ -82,7 +72,7 @@ function PersonalInfo({ onNext, onChange }) {
       <input
         type="text"
         name="contactInformation.emailAddress"
-        value={formData.contactInformation.emailAddress}
+        value={formData.contactInformation?.emailAddress || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -106,23 +96,25 @@ function PersonalInfo({ onNext, onChange }) {
       <input
         type="text"
         name="contactInformation.phoneNumber"
-        value={formData.contactInformation.phoneNumber}
+        value={formData.contactInformation?.phoneNumber || ""}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="streetAddress">Street Address:</label>
       <input
+        required
         type="text"
         name="address.streetAddress"
-        value={formData.address.streetAddress}
+        value={formData.address?.streetAddress || ""}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="city">City:</label>
       <input
+        required
         type="text"
         name="address.city"
-        value={formData.address.city}
+        value={formData.address?.city || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -130,7 +122,7 @@ function PersonalInfo({ onNext, onChange }) {
       <input
         type="text"
         name="address.stateProvince"
-        value={formData.address.stateProvince}
+        value={formData.address?.stateProvince || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -138,7 +130,7 @@ function PersonalInfo({ onNext, onChange }) {
       <input
         type="text"
         name="address.postalCode"
-        value={formData.address.postalCode}
+        value={formData.address?.postalCode || ""}
         onChange={handleChange}
         className="form-control"
       />

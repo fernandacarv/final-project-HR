@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { MainForm } from "../../Context/mainform.context";
 
 function JobDetails({ onNext, onBack, onChange }) {
-  const [formData, setFormData] = useState({
-    jobDetails: {
-      jobTitle: "",
-      departmentID: "",
-      managerID: "",
-      startDate: "",
-      endDate: "",
-    },
-    salaryInformation: { salary: "", currency: "" },
-    workHours: { weeklyWorkHours: "" },
-    benefitsAndPerks: { healthInsurance: "", retirementPlans: "" },
-  });
+  const { formData, setFormData } = useContext(MainForm);
 
-  const [employee, setEmployee] = useState({
-    jobDetails: {
-      jobTitle: "",
-      departmentID: "",
-      managerID: "",
-      startDate: "",
-      endDate: "",
-    },
-    salaryInformation: { salary: "", currency: "" },
-    workHours: { weeklyWorkHours: "" },
-    benefitsAndPerks: { healthInsurance: "", retirementPlans: "" },
-  });
+  useEffect(() => {
+    // Assuming you want to fetch and set the data when the component mounts
+    const fetchData = async () => {
+      // Fetch your data and update the form data using setFormData
+      // Example: const response = await fetchYourData();
+      // setFormData(response.data);
+    };
+
+    fetchData();
+  }, [setFormData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,32 +21,34 @@ function JobDetails({ onNext, onBack, onChange }) {
     // If the changed property is part of a nested object
     if (name.includes(".")) {
       const [parent, child] = name.split(".");
+      const formattedValue = name.includes("date")
+        ? new Date(value).toISOString().split("T")[0]
+        : value;
+
+      console.log(`Formatted ${name}:`, formattedValue);
+
       setFormData((prevData) => ({
         ...prevData,
         [parent]: {
           ...prevData[parent],
-          [child]: value,
+          [child]: formattedValue,
         },
-      })),
-      setEmployee((prevData) => ({
-        ...prevData,
-        [parent]: {
-          ...prevData[parent],
-          [child]: value,
-        },
-      }))
+      }));
     } else {
       // If the changed property is at the top level
+      const formattedValue = name.includes("date")
+        ? new Date(value).toISOString().split("T")[0]
+        : value;
+
       setFormData((prevData) => ({
         ...prevData,
-        [name]: value,
+        [name]: formattedValue,
       }));
     }
   };
 
   const handleNext = () => {
     onChange(formData);
-    onChange(employee)
     onNext();
   };
 
@@ -73,19 +63,18 @@ function JobDetails({ onNext, onBack, onChange }) {
       <input
         type="text"
         name="jobDetails.jobTitle"
-        value={formData.jobDetails.jobTitle}
+        value={formData.jobDetails?.jobTitle || ""}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="departmentID">Department ID:</label>
       <select
         name="jobDetails.departmentID"
-        value={formData.jobDetails.departmentID}
+        value={formData.jobDetails?.departmentID || ""}
         onChange={handleChange}
-        className="form-control">
-        <option
-          disabled
-          value="">
+        className="form-control"
+      >
+        <option disabled value="">
           Select
         </option>
         <option value="Web Development">Web Development</option>
@@ -99,7 +88,7 @@ function JobDetails({ onNext, onBack, onChange }) {
       <input
         type="text"
         name="jobDetails.managerID"
-        value={formData.jobDetails.managerID}
+        value={formData.jobDetails?.managerID || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -107,23 +96,23 @@ function JobDetails({ onNext, onBack, onChange }) {
       <input
         type="date"
         name="jobDetails.startDate"
-        value={formData.jobDetails.startDate}
+        value={formData.jobDetails?.startDate || ""}
         onChange={handleChange}
         className="form-control"
       />
-      <label htmlFor="endDate">End Date:</label>
+      {/* <label htmlFor="endDate">End Date:</label>
       <input
         type="date"
         name="jobDetails.endDate"
-        value={formData.jobDetails.endDate}
+        value={formData.jobDetails?.endDate || ""}
         onChange={handleChange}
         className="form-control"
-      />
+      /> */}
       <label htmlFor="salary">Salary:</label>
       <input
         type="number"
         name="salaryInformation.salary"
-        value={formData.salaryInformation.salary}
+        value={formData.salaryInformation?.salary || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -131,7 +120,7 @@ function JobDetails({ onNext, onBack, onChange }) {
       <input
         type="text"
         name="salaryInformation.currency"
-        value={formData.salaryInformation.currency}
+        value={formData.salaryInformation?.currency || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -139,19 +128,18 @@ function JobDetails({ onNext, onBack, onChange }) {
       <input
         type="number"
         name="workHours.weeklyWorkHours"
-        value={formData.workHours.weeklyWorkHours}
+        value={formData.workHours?.weeklyWorkHours || ""}
         onChange={handleChange}
         className="form-control"
       />
       <label htmlFor="healthInsurance">Health Insurance</label>
       <select
         name="benefitsAndPerks.healthInsurance"
-        value={formData.benefitsAndPerks.healthInsurance}
+        value={formData.benefitsAndPerks?.healthInsurance || ""}
         onChange={handleChange}
-        className="form-control">
-        <option
-          value=""
-          disabled>
+        className="form-control"
+      >
+        <option value="" disabled>
           Select
         </option>
         <option value="Yes">Yes</option>
@@ -160,12 +148,11 @@ function JobDetails({ onNext, onBack, onChange }) {
       <label htmlFor="retirementPlans">Retirement Plans</label>
       <select
         name="benefitsAndPerks.retirementPlans"
-        value={formData.benefitsAndPerks.retirementPlans}
+        value={formData.benefitsAndPerks?.retirementPlans || ""}
         onChange={handleChange}
-        className="form-control">
-        <option
-          value=""
-          disabled>
+        className="form-control"
+      >
+        <option value="" disabled>
           Select
         </option>
         <option value="Yes">Yes</option>

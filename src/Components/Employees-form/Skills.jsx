@@ -1,20 +1,22 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { MainForm } from "../../Context/mainform.context";
 
-function Skills({ onChange, onSubmit, onBack }) {
-  const [formData, setFormData] = useState({
-    skillsAndQualifications: { skills: "", education: "" },
-    performanceMetrics: { performanceReviews: "", goals: "" },
-  });
+function Skills({ onChange, onBack }) {
+  const { formData, setFormData } = useContext(MainForm);
 
-  // Side effect to execute when formData changes
   useEffect(() => {
-    onChange(formData); // Pass updated formData to parent
-  }, []);
+    // Assuming you want to fetch and set the data when the component mounts
+    const fetchData = async () => {
+      // Fetch your data and update the form data using setFormData
+      // Example: const response = await fetchYourData();
+      // setFormData(response.data);
+    };
+
+    fetchData();
+  }, [setFormData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     // If the changed property is part of a nested object
     if (name.includes(".")) {
       const [parent, child] = name.split(".");
@@ -36,6 +38,7 @@ function Skills({ onChange, onSubmit, onBack }) {
 
   const handleBack = () => {
     onBack();
+    onChange(formData);
   };
 
   return (
@@ -45,7 +48,7 @@ function Skills({ onChange, onSubmit, onBack }) {
       <input
         type="text"
         name="skillsAndQualifications.skills"
-        value={formData.skillsAndQualifications.skills}
+        value={formData.skillsAndQualifications?.skills || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -53,7 +56,7 @@ function Skills({ onChange, onSubmit, onBack }) {
       <input
         type="text"
         name="skillsAndQualifications.education"
-        value={formData.skillsAndQualifications.education}
+        value={formData.skillsAndQualifications?.education || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -61,7 +64,7 @@ function Skills({ onChange, onSubmit, onBack }) {
       <input
         type="text"
         name="performanceMetrics.performanceReviews"
-        value={formData.performanceMetrics.performanceReviews}
+        value={formData.performanceMetrics?.performanceReviews || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -69,7 +72,7 @@ function Skills({ onChange, onSubmit, onBack }) {
       <input
         type="text"
         name="performanceMetrics.goals"
-        value={formData.performanceMetrics.goals}
+        value={formData.performanceMetrics?.goals || ""}
         onChange={handleChange}
         className="form-control"
       />

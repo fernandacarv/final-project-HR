@@ -35,16 +35,14 @@ export default function EmployeeDetailsPage() {
 
   return (
     <section className="p-8 md:py-0 max-w-7xl mx-auto">
-      <div
-        key={employee.firstName}
-        className="grid grid-cols-1 gap-8 md:grid-cols-2 md:place-items-center md:h-screen">
+      <div key={employee._id}>
         <article>
           <img />
         </article>
 
         <article>
           <h1 className="mb-8 font-bold text-gray-900 dark:text-white text-4xl lg:text-6xl">
-            {employee.lastName}
+            {employee.firstName} {employee.lastName}
           </h1>
 
           <ul className="my-4 flex flex-col items-start justify-start gap-2 text-slate-700 dark:text-gray-400">
@@ -73,12 +71,14 @@ export default function EmployeeDetailsPage() {
                 <>
                   <br /> Position: {employee.jobDetails.jobTitle || "N/A"}
                   <br /> Department: {employee.jobDetails.departmentID || "N/A"}
+                  <br />
+                  Start Date: {employee.jobDetails.startDate || "N/A"}
+                  <br /> End Date: {employee.jobDetails.endDate || "N/A"}
                 </>
               ) : (
                 "N/A"
               )}
             </li>
-            <li>Start Date: {employee.startDate}</li>
             <li>
               <b>Salary Information:</b>{" "}
               {employee.salaryInformation ? (
@@ -152,10 +152,11 @@ export default function EmployeeDetailsPage() {
           </ul>
           <Link
             to="/"
-            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">
+            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
+          >
             &larr; Back
           </Link>
-          <Link>
+          <Link to={`/employees/edit/${employee._id}`}>
             <button>Edit Employee</button>
           </Link>
           <button onClick={handleDelete}>Delete Employee</button>

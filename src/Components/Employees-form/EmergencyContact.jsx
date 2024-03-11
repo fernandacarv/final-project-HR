@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { MainForm } from "../../Context/mainform.context";
 
 function EmergencyContact({ onNext, onBack, onChange }) {
-  const [formData, setFormData] = useState({
-    emergencyContact: { name: "", phoneNumberEmergency: "", relationship: "" },
-  });
+  const { formData, setFormData } = useContext(MainForm);
 
-  const [employee, setEmployee] = useState({
-    emergencyContact: { name: "", phoneNumberEmergency: "", relationship: "" },
-  });
+  useEffect(() => {
+    // Assuming you want to fetch and set the data when the component mounts
+    const fetchData = async () => {
+      // Fetch your data and update the form data using setFormData
+      // Example: const response = await fetchYourData();
+      // setFormData(response.data);
+    };
+
+    fetchData();
+  }, [setFormData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     // If the changed property is part of a nested object
     if (name.includes(".")) {
       const [parent, child] = name.split(".");
@@ -32,12 +38,11 @@ function EmergencyContact({ onNext, onBack, onChange }) {
 
   const handleNext = () => {
     onChange(formData);
-    onChange(employee);
     onNext();
   };
 
   const handleBack = () => {
-    onBack();
+    onBack(formData);
   };
 
   return (
@@ -47,7 +52,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
       <input
         type="text"
         name="emergencyContact.name"
-        value={formData.name}
+        value={formData.emergencyContact?.name || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -55,7 +60,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
       <input
         type="text"
         name="emergencyContact.phoneNumberEmergency"
-        value={formData.phoneNumberEmergency}
+        value={formData.emergencyContact?.phoneNumberEmergency || ""}
         onChange={handleChange}
         className="form-control"
       />
@@ -63,7 +68,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
       <input
         type="text"
         name="emergencyContact.relationship"
-        value={formData.relationship}
+        value={formData.emergencyContact?.relationship || ""}
         onChange={handleChange}
         className="form-control"
       />
