@@ -63,8 +63,7 @@ function EmployeesMainPage() {
       <div className="flex justify-between items-center p-2 font-bold border-b">
         <span
           className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
+          style={{ flexBasis: "20%" }}>
           Image
         </span>
         <span style={{ flexBasis: "20%" }}>Name</span>
