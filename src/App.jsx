@@ -13,6 +13,7 @@ import { BudgetFormProviderWrapper } from "./Context/budget.context";
 import CreateBudgetPage from "./Pages/CreateBudgetPage";
 import BudgetDetailsPage from "./Pages/BudgetDetailsPage";
 import BudgetEditPage from "./Pages/BudgetEditPage";
+import BudgetsMainPage from "./Pages/BudgetsMainPage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               </BudgetFormProviderWrapper>
             }
           />
+          <Route path="/budgets" element={<BudgetsMainPage />} />
           <Route path="/budgets/:id" element={<BudgetDetailsPage />} />
           <Route
             path="/budgets/edit/:id"
