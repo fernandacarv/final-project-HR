@@ -37,7 +37,16 @@ export default function BudgetDetailsPage() {
     <section className="p-8 md:py-0 max-w-7xl mx-auto">
       <div key={budget._id}>
         <article>
-          <img />
+          <Link
+            to="/budgets"
+            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
+          >
+            &larr; Back
+          </Link>
+          <Link to={`/budgets/edit/${budget._id}`}>
+            <button>Edit Budget</button>
+          </Link>
+          <button onClick={handleDelete}>Delete Budget</button>
         </article>
 
         <article>
@@ -292,16 +301,6 @@ export default function BudgetDetailsPage() {
               {budget.notesComments ?? "N/A"}
             </li>
           </ul>
-          <Link
-            to="/budgets"
-            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
-          >
-            &larr; Back
-          </Link>
-          <Link to={`/budgets/edit/${budget._id}`}>
-            <button>Edit Budget</button>
-          </Link>
-          <button onClick={handleDelete}>Delete Budget</button>
         </article>
       </div>
     </section>

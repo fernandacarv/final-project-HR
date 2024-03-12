@@ -29,7 +29,10 @@ function FilterBarBudget({ onFilterChange }) {
     };
 
     // Check if either the selected status or currency has changed
-    if (selectedStatus !== "" || selectedCurrency !== "") {
+    if (
+      selectedStatus !== onFilterChange ||
+      selectedCurrency !== onFilterChange
+    ) {
       fetchData();
     }
   }, [selectedStatus, selectedCurrency]);
@@ -38,7 +41,7 @@ function FilterBarBudget({ onFilterChange }) {
     <div>
       <label>Select Status:</label>
       <select onChange={(e) => setSelectedStatus(e.target.value)}>
-        <option value="">All Departments</option>
+        <option value="">All Status</option>
         <option value="Pending">Pending</option>
         <option value="Approved">Approved</option>
         <option value="Rejected">Rejected</option>
@@ -46,9 +49,7 @@ function FilterBarBudget({ onFilterChange }) {
 
       <label>Select Currency:</label>
       <select onChange={(e) => setSelectedCurrency(e.target.value)}>
-        <option value="" unselectable>
-          <b>Currency</b>
-        </option>
+        <option value="">Currency</option>
         <option value="EUR">EUR</option>
         <option value="USD">USD</option>
         <option value="BRL">BRL</option>

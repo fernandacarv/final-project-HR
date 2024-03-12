@@ -1,8 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  BudgetForm,
-  BudgetFormProviderWrapper,
-} from "../../Context/budget.context";
+import { BudgetForm } from "../../Context/budget.context";
 
 function BudgetInfo({ onChange }) {
   const { formData, setFormData } = useContext(BudgetForm);
@@ -52,7 +49,7 @@ function BudgetInfo({ onChange }) {
 
   return (
     <div>
-      <h4>Budget Information</h4>
+      <h4>Budget Main Information</h4>
       <label htmlFor="budgetName">Budget Name:</label>
       <input
         required
@@ -62,6 +59,17 @@ function BudgetInfo({ onChange }) {
         onChange={handleChange}
         className={`form-control`}
       />
+      <label htmlFor="approvalStatus">Approval Status:</label>
+      <select
+        name="approvalStatus"
+        value={formData.approvalStatus || ""}
+        onChange={handleChange}
+        className={`form-control`}
+      >
+        <option value="Pending">Pending</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
+      </select>
       <label htmlFor="startDate">Start Date:</label>
       <input
         type="date"
