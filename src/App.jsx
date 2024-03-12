@@ -7,14 +7,19 @@ import EmployeeDetailsPage from "./Pages/EmployeeDetailsPage";
 import CreateEmployeePage from "./Pages/CreateEmployeePage";
 import { MainFormProviderWrapper } from "./Context/mainform.context";
 import EmployeeEditPage from "./Pages/EmployeeEditPage";
-import NavbarComponent from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import { BudgetFormProviderWrapper } from "./Context/budget.context";
+import CreateBudgetPage from "./Pages/CreateBudgetPage";
+import BudgetDetailsPage from "./Pages/BudgetDetailsPage";
+import BudgetEditPage from "./Pages/BudgetEditPage";
+import BudgetsMainPage from "./Pages/BudgetsMainPage";
 
 function App() {
   return (
     <div>
       <div>
-        <NavbarComponent />
+        <Navbar />
         <Routes>
           <Route
             path="/signup"
@@ -42,6 +47,24 @@ function App() {
               <MainFormProviderWrapper>
                 <EmployeeEditPage />
               </MainFormProviderWrapper>
+            }
+          />
+          <Route
+            path="/newbudget"
+            element={
+              <BudgetFormProviderWrapper>
+                <CreateBudgetPage />
+              </BudgetFormProviderWrapper>
+            }
+          />
+          <Route path="/budgets" element={<BudgetsMainPage />} />
+          <Route path="/budgets/:id" element={<BudgetDetailsPage />} />
+          <Route
+            path="/budgets/edit/:id"
+            element={
+              <BudgetFormProviderWrapper>
+                <BudgetEditPage />
+              </BudgetFormProviderWrapper>
             }
           />
         </Routes>

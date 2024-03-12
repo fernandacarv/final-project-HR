@@ -100,14 +100,6 @@ function JobDetails({ onNext, onBack, onChange }) {
         onChange={handleChange}
         className="form-control"
       />
-      {/* <label htmlFor="endDate">End Date:</label>
-      <input
-        type="date"
-        name="jobDetails.endDate"
-        value={formData.jobDetails?.endDate || ""}
-        onChange={handleChange}
-        className="form-control"
-      /> */}
       <label htmlFor="salary">Salary:</label>
       <input
         type="number"
