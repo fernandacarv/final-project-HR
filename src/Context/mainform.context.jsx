@@ -130,6 +130,7 @@ function MainFormProviderWrapper(props) {
         handleUpdate: handleRequest("PUT"),
         handleBack,
         handleNext,
+        id,
       }}
     >
       {props.children}

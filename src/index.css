@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.footer {
+  left: 0;
+  bottom: 0;
+  margin-top: auto;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px; /* Adjust as needed */
+}
+
+body {
+  height: 100vh;
+}
