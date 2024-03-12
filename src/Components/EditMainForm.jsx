@@ -6,6 +6,7 @@ import PersonalInfo from "./Employees-form/PersonalInfo";
 // import ProfileSetup from "./Employees-form/Profile-Setup";
 import Skills from "./Employees-form/Skills";
 import { MainForm } from "../Context/mainform.context";
+import { Link } from "react-router-dom";
 
 function EditMainForm() {
   const {
@@ -17,9 +18,8 @@ function EditMainForm() {
     handleEmergencyContactChange,
     handleSkillsChange,
     step,
+    id,
   } = useContext(MainForm);
-
-  const totalSteps = 4; // Total number of steps in the form
 
   return (
     <form onSubmit={handleUpdate}>
@@ -49,6 +49,9 @@ function EditMainForm() {
       )}
       {/* Check if it's not the last step to show submit button */}
       {<button type="submit">Edit</button>}
+      <Link to={`/employees/${id}`}>
+        <button>Back</button>
+      </Link>
     </form>
   );
 }

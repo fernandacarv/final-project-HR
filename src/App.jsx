@@ -14,6 +14,7 @@ import CreateBudgetPage from "./Pages/CreateBudgetPage";
 import BudgetDetailsPage from "./Pages/BudgetDetailsPage";
 import BudgetEditPage from "./Pages/BudgetEditPage";
 import BudgetsMainPage from "./Pages/BudgetsMainPage";
+import EmployeesMainPage from "./Pages/EmployeesMainPage";
 
 function App() {
   return (
@@ -21,14 +22,9 @@ function App() {
       <div>
         <Navbar />
         <Routes>
-          <Route
-            path="/signup"
-            element={<Signup />}
-          />
-          <Route
-            path="/login"
-            element={<Login />}
-          />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/employees" element={<EmployeesMainPage />} />
           <Route
             path="/newemployee"
             element={
@@ -37,10 +33,7 @@ function App() {
               </MainFormProviderWrapper>
             }
           />
-          <Route
-            path="/employees/:id"
-            element={<EmployeeDetailsPage />}
-          />
+          <Route path="/employees/:id" element={<EmployeeDetailsPage />} />
           <Route
             path="/employees/edit/:id"
             element={
