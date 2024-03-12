@@ -14,9 +14,16 @@ function App() {
   return (
     <div>
       <div>
+        <NavbarComponent />
         <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
           <Route
             path="/newemployee"
             element={
@@ -25,7 +32,10 @@ function App() {
               </MainFormProviderWrapper>
             }
           />
-          <Route path="/employees/:id" element={<EmployeeDetailsPage />} />
+          <Route
+            path="/employees/:id"
+            element={<EmployeeDetailsPage />}
+          />
           <Route
             path="/employees/edit/:id"
             element={
@@ -35,6 +45,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </div>
     </div>
   );
