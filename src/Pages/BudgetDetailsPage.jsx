@@ -29,7 +29,7 @@ export default function BudgetDetailsPage() {
   const handleDelete = () => {
     axios
       .delete(`${API_URL}/api/budgets/${id}`)
-      .then(() => navigate(`/`))
+      .then(() => navigate(`/api/budgets`))
       .catch((error) => console.log(error));
   };
 
