@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { MainForm } from "../../Context/mainform.context";
 
-function Skills({ onChange, onBack }) {
+function Skills({ onChange, onBack, onNext }) {
   const { formData, setFormData } = useContext(MainForm);
 
   useEffect(() => {
@@ -41,6 +41,11 @@ function Skills({ onChange, onBack }) {
     onChange(formData);
   };
 
+  const handleNext = () => {
+    onChange(formData);
+    onNext();
+  };
+
   return (
     <div>
       <h4>Skills & Performance Metrics</h4>
@@ -77,6 +82,7 @@ function Skills({ onChange, onBack }) {
         className="form-control"
       />
       <button onClick={handleBack}>Go back</button>
+      <button onClick={handleNext}>Next: Profile Setup</button>
     </div>
   );
 }

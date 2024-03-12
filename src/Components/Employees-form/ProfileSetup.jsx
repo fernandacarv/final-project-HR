@@ -1,47 +1,65 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { MainForm } from "../../Context/mainform.context";
 
-function ProfileSetup({ onChange, onNext }) {
-  const [formData, setFormData] = useState({
-    profilePicture: null, // To store the profile picture file
-    documents: [], // To store an array of document files
-  });
+function ProfileSetup({ onChange, onNext, onBack }) {
+  const { formData, setFormData, uploadFile } = useContext(MainForm);
 
-  // Function to handle document files change
-  const handleChange = (e) => {
+  useEffect(() => {
+    // Assuming you want to fetch and set the data when the component mounts
+    const fetchData = async () => {
+      // Fetch your data and update the form data using setFormData
+      // Example: const response = await fetchYourData();
+      // setFormData(response.data);
+    };
+
+    fetchData();
+  }, [setFormData]);
+
+  // Function to handle document and image files change
+  const handleChange = async (e, type) => {
     const files = e.target.files; // Get the selected files
-    setFormData((prevData) => ({
-      ...prevData,
-      documents: files, 
-    }));
+    const file = files[0]; // Assuming you are handling a single file
+    if (file) {
+      const fileUrl = await uploadFile(file, type);
+      setFormData((prevData) => ({
+        ...prevData,
+        [type]: fileUrl,
+      }));
+    }
   };
 
-  // Function to handle form submission
-  const handleSubmit = () => {
-    onNext(); // Move to the next step
+  const handleNext = () => {
+    onChange(formData);
+    onNext();
+  };
+
+  const handleBack = () => {
+    onBack();
   };
 
   return (
     <div>
       <h4>Profile Setup</h4>
       <br />
-      <label htmlFor="profilePicture">Upload Profile Picture</label>
+      <label htmlFor="imageUrl">Upload Profile Picture</label>
       <input
         type="file"
-        id="profilePicture"
-        onChange={handleChange}
-        name="profilePicture"
+        id="imageUrl"
+        onChange={(e) => handleChange(e, "imageUrl")}
+        name="imageUrl"
       />
       <br />
-      <label htmlFor="documents">Upload Documents</label>
+      <label htmlFor="uploadedDocuments.fileUrl">Upload Documents</label>
       <input
         type="file"
-        id="documents"
-        onChange={handleChange}
-        name="documents"
+        id="uploadedDocuments.fileUrl"
+        onChange={(e) => handleChange(e, "uploadedDocuments.fileUrl")}
+        name="uploadedDocuments.fileUrl"
         multiple // Allow multiple file selection
       />
       <br />
-      <button onClick={handleSubmit}>Next: Job Details</button>
+      <button onClick={handleBack}>Go back</button>
+      <button onClick={handleNext}>Next: Job Details</button>
     </div>
   );
 }

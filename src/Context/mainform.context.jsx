@@ -11,6 +11,8 @@ const defaultValues = {
   lastName: "",
   dateOfBirth: "",
   gender: "",
+  imageUrl: "",
+  uploadedDocuments: [{ fileName: "", fileUrl: "" }],
   contactInformation: { emailAddress: "", phoneNumber: "" },
   address: { streetAddress: "", city: "", stateProvince: "", postalCode: "" },
   jobDetails: {
@@ -72,11 +74,59 @@ function MainFormProviderWrapper(props) {
       .catch((error) => console.log(error));
   };
 
-  const handleProfileChange = (data) => {
+  const uploadFile = async (file) => {
+    try {
+      // Check if the file is not null or undefined
+      if (!file) {
+        throw new Error("No file provided for upload.");
+      }
+
+      // Create a new FormData instance
+      const formData = new FormData();
+      // Append the file to the FormData object with the key "file"
+      formData.append("file", file);
+      console.log(formData);
+
+      // Send a POST request to the server with the FormData containing the file
+      const response = await axios.post(`${API_URL}/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // Return the URL of the uploaded file from the server response
+      return response.data.fileUrl;
+    } catch (error) {
+      // Log the error for debugging purposes
+      console.error("Error uploading file:", error);
+      // Return null to indicate that the upload failed
+      return null;
+    }
+  };
+
+  const handleProfileChange = async (data) => {
     setFormData((prevData) => ({
       ...prevData,
       ...data,
     }));
+
+    // Check if an image file is present in the data
+    if (data.imageUrl) {
+      const imageUrl = await uploadFile(data.imageUrl, "imageUrl");
+      setFormData((prevData) => ({
+        ...prevData,
+        imageUrl,
+      }));
+    }
+
+    // Check if a document file is present in the data
+    if (data.documentFile) {
+      const fileUrl = await uploadFile(data.documentFile, "fileUrl");
+      setFormData((prevData) => ({
+        ...prevData,
+        uploadedDocuments: [{ fileName: data.documentFile.name, fileUrl }],
+      }));
+    }
   };
 
   const handleJobDetailsChange = (data) => {
@@ -131,8 +181,8 @@ function MainFormProviderWrapper(props) {
         handleBack,
         handleNext,
         id,
-      }}
-    >
+        uploadFile,
+      }}>
       {props.children}
     </MainForm.Provider>
   );

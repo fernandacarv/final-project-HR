@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
+import ProfileSetup from "./Employees-form/ProfileSetup";
 import JobDetails from "./Employees-form/JobDetails";
 import EmergencyContact from "./Employees-form/EmergencyContact";
 import PersonalInfo from "./Employees-form/PersonalInfo";
@@ -17,9 +18,10 @@ function MainFormEmployees() {
     handleJobDetailsChange,
     handleEmergencyContactChange,
     handleSkillsChange,
+    handleProfileSetupChange
   } = useContext(MainForm);
 
-  const totalSteps = 4; // Total number of steps in the form
+  const totalSteps = 5; // Total number of steps in the form
 
   return (
     <form onSubmit={handleSubmit}>
@@ -47,10 +49,19 @@ function MainFormEmployees() {
           onBack={handleBack}
         />
       )}
-      {/* Check if it's not the last step to show submit button */}
+      {step === 5 && (
+        <ProfileSetup
+          onChange={handleProfileSetupChange}
+          onNext={handleNext}
+          onBack={handleBack}
+        />
+      )}
       {step === totalSteps && <button type="submit">Submit</button>}
     </form>
   );
+
+
+
 }
 
 export default MainFormEmployees;
