@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
-import BudgetInfo from "./Budget-form/BudgetInfo";
+import BudgetInfo from "./budget-form/BudgetInfo";
 import { BudgetForm } from "../Context/budget.context";
-import ExpenseCategories from "./Budget-form/ExpenseCategories";
+import ExpenseCategories from "./budget-form/ExpenseCategories";
 // IMPORT BUDGET CONTEXT
 
 function CreateFormBudget() {

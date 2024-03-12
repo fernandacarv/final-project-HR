@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import EmployeeCard from "../Components/EmployeeCard";
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = "http://localhost:5005";
@@ -21,8 +22,7 @@ function BudgetsMainPage() {
       <div className="flex justify-between items-center p-2 font-bold border-b">
         <span
           className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
+          style={{ flexBasis: "20%" }}>
           Image
         </span>
         <span style={{ flexBasis: "20%" }}>Name</span>

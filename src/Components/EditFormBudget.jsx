@@ -5,10 +5,10 @@ import {
   BudgetForm,
   BudgetFormProviderWrapper,
 } from "../Context/budget.context";
-import BudgetInfo from "./Budget-form/BudgetInfo";
-import ExpenseCategories from "./Budget-form/ExpenseCategories";
-import ActualAmounts from "./Budget-form/ActualAmounts";
-import BudgetAmounts from "./Budget-form/BudgetAmounts";
+import ExpenseCategories from "./budget-form/ExpenseCategories";
+import ActualAmounts from "./budget-form/ActualAmounts";
+import BudgetAmounts from "./budget-form/BudgetAmounts";
+import BudgetInfo from "./budget-form/BudgetInfo";
 
 function EditFormBudget() {
   const {
@@ -45,16 +45,24 @@ function EditFormBudget() {
   return (
     <div>
       <section className="flex-initial">
-        <button onClick={handleOnClick} value={1}>
+        <button
+          onClick={handleOnClick}
+          value={1}>
           Edit Main Info
         </button>
-        <button onClick={handleOnClick} value={2}>
+        <button
+          onClick={handleOnClick}
+          value={2}>
           Budget Amounts
         </button>
-        <button onClick={handleOnClick} value={3}>
+        <button
+          onClick={handleOnClick}
+          value={3}>
           Actual Amount
         </button>
-        <button onClick={handleOnClick} value={4}>
+        <button
+          onClick={handleOnClick}
+          value={4}>
           Expenses
         </button>
       </section>
