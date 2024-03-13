@@ -23,7 +23,7 @@ const EmployeeCard = ({
           style={{ flexBasis: "20%" }}
         >
           <img
-            src={imageUrl || "src/images/userLog.png"}
+            src={imageUrl || "../images/userLog.png"}
             alt={`${firstName} ${lastName}`}
             style={{ width: "50px", height: "50px", borderRadius: "50%" }}
           />

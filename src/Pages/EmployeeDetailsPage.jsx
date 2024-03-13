@@ -44,7 +44,7 @@ export default function EmployeeDetailsPage() {
           <h1 className="mb-8 font-bold text-gray-900 dark:text-white text-4xl lg:text-6xl">
             {employee.firstName} {employee.lastName}
           </h1>
-
+          <img src={employee.imageUrl} alt="" />
           <ul className="my-4 flex flex-col items-start justify-start gap-2 text-slate-700 dark:text-gray-400">
             <li>Date of Birth: {employee.dateOfBirth}</li>
             <li>Gender: {employee.gender}</li>
