@@ -6,7 +6,7 @@ const EmployeeCard = ({
   lastName,
   jobDetails,
   contactInformation,
-  profilePicture,
+  imageUrl,
   className,
   _id: id,
 }) => {
@@ -23,7 +23,7 @@ const EmployeeCard = ({
           style={{ flexBasis: "20%" }}
         >
           <img
-            src={profilePicture || "src/images/userLog.png"}
+            src={imageUrl || "src/images/userLog.png"}
             alt={`${firstName} ${lastName}`}
             style={{ width: "50px", height: "50px", borderRadius: "50%" }}
           />

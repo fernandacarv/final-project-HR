@@ -21,66 +21,46 @@ function App() {
     <div>
       <div>
         <Navbar />
-        <body>
-          <Routes>
-            <Route
-              path="/signup"
-              element={<Signup />}
-            />
-            <Route
-              path="/login"
-              element={<Login />}
-            />
-            <Route
-              path="/employees"
-              element={<EmployeesMainPage />}
-            />
-            <Route
-              path="/newemployee"
-              element={
-                <MainFormProviderWrapper>
-                  <CreateEmployeePage />
-                </MainFormProviderWrapper>
-              }
-            />
-            <Route
-              path="/employees/:id"
-              element={<EmployeeDetailsPage />}
-            />
-            <Route
-              path="/employees/edit/:id"
-              element={
-                <MainFormProviderWrapper>
-                  <EmployeeEditPage />
-                </MainFormProviderWrapper>
-              }
-            />
-            <Route
-              path="/newbudget"
-              element={
-                <BudgetFormProviderWrapper>
-                  <CreateBudgetPage />
-                </BudgetFormProviderWrapper>
-              }
-            />
-            <Route
-              path="/budgets"
-              element={<BudgetsMainPage />}
-            />
-            <Route
-              path="/budgets/:id"
-              element={<BudgetDetailsPage />}
-            />
-            <Route
-              path="/budgets/edit/:id"
-              element={
-                <BudgetFormProviderWrapper>
-                  <BudgetEditPage />
-                </BudgetFormProviderWrapper>
-              }
-            />
-          </Routes>
-        </body>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/employees" element={<EmployeesMainPage />} />
+          <Route
+            path="/newemployee"
+            element={
+              <MainFormProviderWrapper>
+                <CreateEmployeePage />
+              </MainFormProviderWrapper>
+            }
+          />
+          <Route path="/employees/:id" element={<EmployeeDetailsPage />} />
+          <Route
+            path="/employees/edit/:id"
+            element={
+              <MainFormProviderWrapper>
+                <EmployeeEditPage />
+              </MainFormProviderWrapper>
+            }
+          />
+          <Route
+            path="/newbudget"
+            element={
+              <BudgetFormProviderWrapper>
+                <CreateBudgetPage />
+              </BudgetFormProviderWrapper>
+            }
+          />
+          <Route path="/budgets" element={<BudgetsMainPage />} />
+          <Route path="/budgets/:id" element={<BudgetDetailsPage />} />
+          <Route
+            path="/budgets/edit/:id"
+            element={
+              <BudgetFormProviderWrapper>
+                <BudgetEditPage />
+              </BudgetFormProviderWrapper>
+            }
+          />
+        </Routes>
         <Footer />
       </div>
     </div>

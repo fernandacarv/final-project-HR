@@ -24,9 +24,6 @@ function JobDetails({ onNext, onBack, onChange }) {
       const formattedValue = name.includes("date")
         ? new Date(value).toISOString().split("T")[0]
         : value;
-
-      console.log(`Formatted ${name}:`, formattedValue);
-
       setFormData((prevData) => ({
         ...prevData,
         [parent]: {
