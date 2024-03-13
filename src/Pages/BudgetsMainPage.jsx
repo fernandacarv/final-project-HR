@@ -51,33 +51,35 @@ function BudgetsMainPage() {
   useEffect(() => {}, [filteredBudgets]);
 
   return (
-    <div className="BudgetsMainPage">
-      <div className="flex justify-content">
-        <FilterBarBudget onFilterChange={handleFilterChange} />
-        <SearchBar onSearch={handleSearch} suggestions={suggestions} />
-      </div>
+      <div className="BudgetsMainPage">
+        <div className="flex justify-content">
+          <FilterBarBudget onFilterChange={handleFilterChange} />
+          <SearchBar
+            onSearch={handleSearch}
+            suggestions={suggestions}
+          />
+        </div>
 
-      <div className="flex justify-between items-center p-2 font-bold border-b">
-        <span
-          className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
-          Budget Name
-        </span>
-        <span style={{ flexBasis: "20%" }}>Start Date</span>
-        <span style={{ flexBasis: "20%" }}>End Date</span>
-        <span style={{ flexBasis: "20%" }}>Approval Status</span>
-        <span style={{ flexBasis: "20%" }}>Currency</span>
-      </div>
+        <div className="flex justify-between items-center p-2 font-bold border-b">
+          <span
+            className="flex items-center justify-center"
+            style={{ flexBasis: "20%" }}>
+            Budget Name
+          </span>
+          <span style={{ flexBasis: "20%" }}>Start Date</span>
+          <span style={{ flexBasis: "20%" }}>End Date</span>
+          <span style={{ flexBasis: "20%" }}>Approval Status</span>
+          <span style={{ flexBasis: "20%" }}>Currency</span>
+        </div>
 
-      {filteredBudgets.map((budget, index) => (
-        <BudgetCard
-          key={budget._id}
-          {...budget}
-          className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
-        />
-      ))}
-    </div>
+        {filteredBudgets.map((budget, index) => (
+          <BudgetCard
+            key={budget._id}
+            {...budget}
+            className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
+          />
+        ))}
+      </div>
   );
 }
 

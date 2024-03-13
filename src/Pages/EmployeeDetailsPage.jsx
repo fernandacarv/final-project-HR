@@ -34,7 +34,7 @@ export default function EmployeeDetailsPage() {
   };
 
   return (
-    <section className="p-8 md:py-0 max-w-7xl mx-auto">
+    <div className="p-8 md:py-0 max-w-7xl mx-auto">
       <div key={employee._id}>
         <article>
           <img />
@@ -44,7 +44,10 @@ export default function EmployeeDetailsPage() {
           <h1 className="mb-8 font-bold text-gray-900 dark:text-white text-4xl lg:text-6xl">
             {employee.firstName} {employee.lastName}
           </h1>
-          <img src={employee.imageUrl} alt="" />
+          <img
+            src={employee.imageUrl}
+            alt=""
+          />
           <ul className="my-4 flex flex-col items-start justify-start gap-2 text-slate-700 dark:text-gray-400">
             <li>Date of Birth: {employee.dateOfBirth}</li>
             <li>Gender: {employee.gender}</li>
@@ -152,8 +155,7 @@ export default function EmployeeDetailsPage() {
           </ul>
           <Link
             to="/employees"
-            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
-          >
+            className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">
             &larr; Back
           </Link>
           <Link to={`/employees/edit/${employee._id}`}>
@@ -162,6 +164,6 @@ export default function EmployeeDetailsPage() {
           <button onClick={handleDelete}>Delete Employee</button>
         </article>
       </div>
-    </section>
+    </div>
   );
 }

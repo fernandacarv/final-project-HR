@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Login";
@@ -14,17 +13,37 @@ import CreateBudgetPage from "./Pages/CreateBudgetPage";
 import BudgetDetailsPage from "./Pages/BudgetDetailsPage";
 import BudgetEditPage from "./Pages/BudgetEditPage";
 import BudgetsMainPage from "./Pages/BudgetsMainPage";
+import NotFoundPage from "./Pages/NotFoundPage";
 import EmployeesMainPage from "./Pages/EmployeesMainPage";
+import MainPage from "./Pages/MainPage";
+import AboutPage from "./Pages/AboutPage";
 
 function App() {
   return (
-    <div>
-      <div>
-        <Navbar />
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex-grow">
         <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/employees" element={<EmployeesMainPage />} />
+          <Route
+            path="/about"
+            element={<AboutPage />}
+          />
+          <Route
+            path="/"
+            element={<MainPage />}
+          />
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+          <Route
+            path="/employees"
+            element={<EmployeesMainPage />}
+          />
           <Route
             path="/newemployee"
             element={
@@ -33,7 +52,10 @@ function App() {
               </MainFormProviderWrapper>
             }
           />
-          <Route path="/employees/:id" element={<EmployeeDetailsPage />} />
+          <Route
+            path="/employees/:id"
+            element={<EmployeeDetailsPage />}
+          />
           <Route
             path="/employees/edit/:id"
             element={
@@ -50,8 +72,14 @@ function App() {
               </BudgetFormProviderWrapper>
             }
           />
-          <Route path="/budgets" element={<BudgetsMainPage />} />
-          <Route path="/budgets/:id" element={<BudgetDetailsPage />} />
+          <Route
+            path="/budgets"
+            element={<BudgetsMainPage />}
+          />
+          <Route
+            path="/budgets/:id"
+            element={<BudgetDetailsPage />}
+          />
           <Route
             path="/budgets/edit/:id"
             element={
@@ -60,9 +88,13 @@ function App() {
               </BudgetFormProviderWrapper>
             }
           />
+          <Route
+            path="*"
+            element={<NotFoundPage />}
+          />
         </Routes>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -57,7 +57,10 @@ function EmployeesMainPage() {
     <div className="EmployeesPage">
       <div className="flex justify-content">
         <FilterBar onFilterChange={handleFilterChange} />
-        <SearchBar onSearch={handleSearch} suggestions={suggestions} />
+        <SearchBar
+          onSearch={handleSearch}
+          suggestions={suggestions}
+        />
       </div>
 
       <div className="flex justify-between items-center p-2 font-bold border-b">

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 const EmployeeCard = ({
   firstName,
   lastName,
@@ -11,17 +10,16 @@ const EmployeeCard = ({
   _id: id,
 }) => {
   const { jobTitle, departmentID } = jobDetails;
-  const { emailAddress, phoneNumber } = contactInformation;
 
+  // Ensure contactInformation exists and has the emailAddress and phoneNumber properties
+  const { emailAddress, phoneNumber } = contactInformation ?? {};
   return (
     <Link to={`/employees/${id}`}>
       <div
-        className={`flex justify-between items-center p-2 border-b ${className}`}
-      >
+        className={`flex justify-between items-center p-2 border-b ${className}`}>
         <div
           className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
+          style={{ flexBasis: "20%" }}>
           <img
             src={imageUrl || "../images/userLog.png"}
             alt={`${firstName} ${lastName}`}
@@ -36,5 +34,4 @@ const EmployeeCard = ({
     </Link>
   );
 };
-
 export default EmployeeCard;

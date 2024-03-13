@@ -1,7 +1,9 @@
 import EditFormBudget from "../Components/EditFormBudget";
 
 function BudgetEditPage() {
-  return <EditFormBudget />;
+  return (
+      <EditFormBudget />
+  );
 }
 
 export default BudgetEditPage;
