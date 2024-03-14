@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL ="https://finalproject-hr-server.onrender.com";
+const API_URL ="https://localhost:5005";
 
 const FilterBar = ({ onFilterChange }) => {
   const [selectedDepartment, setSelectedDepartment] = useState("");
