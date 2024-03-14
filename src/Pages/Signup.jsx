@@ -36,18 +36,18 @@ function Signup() {
   };
 
   return (
-    <div className="signup p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto">
-      <div className="flex justify-center bg-white items-center mb-4 pt-8 absolute top-0 left-0 right-0 py-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 border-b border-gray-300 shadow-sm"></div>
-
+    <div className="signup p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative max-w-2xl">
+      {" "}
+      {/* Increased max-width to max-w-2xl */}
       <form
         onSubmit={handleSignupSubmit}
         className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4">
-        <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
+        <h3 className="text-2xl font-semibold text-white mb-6 sticky left-0">
           Sign Up
         </h3>
         <label
           htmlFor="name"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
           Name
         </label>
         <input
@@ -56,12 +56,12 @@ function Signup() {
           id="name"
           value={name}
           onChange={handleName}
-          className="border rounded p-2 w-full mb-6"
+          className="border rounded p-2 w-full mb-6 bg-gray-400"
           autoComplete="off"
         />
         <label
           htmlFor="email"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
           Email
         </label>
         <input
@@ -70,13 +70,13 @@ function Signup() {
           id="email"
           value={email}
           onChange={handleEmail}
-          className="border rounded p-2 w-full mb-6"
+          className="border rounded p-2 w-full mb-6 bg-gray-400"
           autoComplete="off"
         />
 
         <label
           htmlFor="password"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
           Password
         </label>
         <input
@@ -85,7 +85,7 @@ function Signup() {
           id="password"
           value={password}
           onChange={handlePassword}
-          className="border rounded p-2 w-full mb-6"
+          className="border rounded p-2 w-full mb-6 bg-gray-400"
           autoComplete="off"
         />
 
@@ -95,11 +95,13 @@ function Signup() {
           Create Account
         </button>
       </form>
-
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
       <p className="mt-10 mb-2">Already have an account?</p>
-      <Link to={"/login"}> Log in</Link>
+      <Link
+        to={"/login"}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out w-1/4 flex justify-center">
+        Log in
+      </Link>
     </div>
   );
 }

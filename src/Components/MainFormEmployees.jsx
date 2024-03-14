@@ -18,7 +18,7 @@ function MainFormEmployees() {
     handleJobDetailsChange,
     handleEmergencyContactChange,
     handleSkillsChange,
-    handleProfileSetupChange
+    handleProfileSetupChange,
   } = useContext(MainForm);
 
   const totalSteps = 5; // Total number of steps in the form
@@ -26,7 +26,10 @@ function MainFormEmployees() {
   return (
     <form onSubmit={handleSubmit}>
       {step === 1 && (
-        <PersonalInfo onChange={handleProfileChange} onNext={handleNext} />
+        <PersonalInfo
+          onChange={handleProfileChange}
+          onNext={handleNext}
+        />
       )}
       {step === 2 && (
         <JobDetails
@@ -56,12 +59,17 @@ function MainFormEmployees() {
           onBack={handleBack}
         />
       )}
-      {step === totalSteps && <button type="submit">Submit</button>}
+      <div className="flex justify-center py-4 bg-gray-800">
+        {step === totalSteps && (
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded flex justify-center"
+            type="submit">
+            Submit
+          </button>
+        )}
+      </div>
     </form>
   );
-
-
-
 }
 
 export default MainFormEmployees;

@@ -7,6 +7,7 @@ import PersonalInfo from "./Employees-form/PersonalInfo";
 import Skills from "./Employees-form/Skills";
 import { MainForm } from "../Context/mainform.context";
 import { Link } from "react-router-dom";
+import ProfileSetup from "./Employees-form/ProfileSetup";
 
 function EditMainForm() {
   const {
@@ -17,6 +18,7 @@ function EditMainForm() {
     handleJobDetailsChange,
     handleEmergencyContactChange,
     handleSkillsChange,
+    handleProfileSetupChange,
     step,
     id,
   } = useContext(MainForm);
@@ -24,7 +26,10 @@ function EditMainForm() {
   return (
     <form onSubmit={handleUpdate}>
       {step === 1 && (
-        <PersonalInfo onChange={handleProfileChange} onNext={handleNext} />
+        <PersonalInfo
+          onChange={handleProfileChange}
+          onNext={handleNext}
+        />
       )}
       {step === 2 && (
         <JobDetails
@@ -47,11 +52,24 @@ function EditMainForm() {
           onBack={handleBack}
         />
       )}
-      {/* Check if it's not the last step to show submit button */}
-      {<button type="submit">Edit</button>}
-      <Link to={`/employees/${id}`}>
-        <button>Back</button>
-      </Link>
+      {step === 5 && (
+        <ProfileSetup
+          onChange={handleProfileSetupChange}
+          onBack={handleBack}
+        />
+      )}
+      <div className="flex justify-center py-4 bg-gray-800">
+        <Link to={`/employees/${id}`}>
+          <button className="bg-gray-500 text-white hover:bg-gray-600 px-4 py-2 rounded mr-2">
+            Back
+          </button>
+        </Link>
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          type="submit">
+          Edit
+        </button>
+      </div>
     </form>
   );
 }

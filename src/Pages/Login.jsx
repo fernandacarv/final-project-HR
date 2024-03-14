@@ -37,57 +37,97 @@ function LoginPage() {
   };
 
   return (
-    <div className="p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto">
-      <div className="flex justify-center bg-white items-center mb-4 pt-8 absolute top-0 left-0 right-0 py-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 border-b border-gray-300 shadow-sm"></div>
-
-      <form
-        onSubmit={handleLoginSubmit}
-        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4">
-        <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
-          Login
-        </h3>
-
-        <label
-          htmlFor="email"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={handleEmail}
-          className="border rounded p-2 w-full mb-6"
-          autoComplete="off"
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img
+          className="mx-auto h-10 w-auto"
+          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+          alt="Your Company"
         />
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          Sign in to your account
+        </h2>
+      </div>
 
-        <label
-          htmlFor="password"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePassword}
-          className="border rounded p-2 w-full mb-6"
-          autoComplete="off"
-        />
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form
+          onSubmit={handleLoginSubmit}
+          className="space-y-6"
+          action="#"
+          method="POST">
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium leading-6 text-gray-900">
+              Email address
+            </label>
+            <div className="mt-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={handleEmail}
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-600"
+              />
+            </div>
+          </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out">
-          Log In
-        </button>
-      </form>
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium leading-6 text-gray-900">
+                Password
+              </label>
+              <div className="text-sm">
+                <a
+                  href="#"
+                  className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  Forgot password?
+                </a>
+              </div>
+            </div>
+            <div className="mt-2">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                value={password}
+                onChange={handlePassword}
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-600"
+              />
+            </div>
+          </div>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <div>
+            <button
+              type="submit"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Sign in
+            </button>
+          </div>
+        </form>
 
-      <p className="mt-10 mb-2">Don&apos;t have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+        {errorMessage && (
+          <p className="mt-2 text-center text-sm text-gray-500">
+            {errorMessage}
+          </p>
+        )}
+
+        <p className="mt-10 text-center text-sm text-gray-500">
+          Not a member?{" "}
+          <Link
+            to="/signup"
+            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            Start a 14 day free trial
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function NotFoundPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="lg:px-24 lg:py-24 md:py-20 md:px-10 px-4 py-10 flex flex-col lg:flex-row md:gap-10 gap-6">
+    <div className="h-screen flex items-center justify-center">
+      <div className="lg:px-10 lg:py-10 md:py-8 md:px-4 px-2 py-6 flex flex-col lg:flex-row md:gap-10 gap-6">
         <div className="w-full lg:w-1/2 pb-6 lg:pb-0">
           <div className="text-center lg:text-left">
             <h1 className="my-2 text-gray-200 font-bold text-2xl">
