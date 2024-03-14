@@ -74,20 +74,36 @@ function ProfileSetup({ onChange, onNext, onBack }) {
   };
 
   return (
-    <div>
-      <h4>Profile Setup</h4>
-      <br />
-      <label htmlFor="imageUrl">Upload Profile Picture</label>
-      <input
-        type="file"
-        id="imageUrl"
-        onChange={(e) => handleFileUpload(e)}
-        name="imageUrl"
-      />
-      <br />
-      {imageUrl && <img src={imageUrl} alt="my cloudinary image" />}
-      <button onClick={handleBack}>Go back</button>
-      <button onClick={handleNext}>Next: Job Details</button>
+    <div className="flex justify-center items-center min-h-screen bg-gray-800 p-6">
+      <div className="max-w-md w-full p-6 bg-gray-900 rounded-md shadow-md">
+        <h4 className="text-lg font-semibold mb-4">Profile Setup</h4>
+        <label
+          className="block mb-2"
+          htmlFor="imageUrl">
+          Upload Profile Picture
+        </label>
+        <input
+          type="file"
+          id="imageUrl"
+          onChange={(e) => handleFileUpload(e)}
+          name="imageUrl"
+          className="mb-4"
+        />
+        {imageUrl && (
+          <img
+            src={imageUrl}
+            alt="my cloudinary image"
+            className="mb-4"
+          />
+        )}
+        <div>
+          <button
+            onClick={handleBack}
+            className="bg-gray-500 text-white hover:bg-gray-600 px-4 py-2 rounded mr-2">
+            Go back
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
