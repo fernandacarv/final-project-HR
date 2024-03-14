@@ -4,7 +4,7 @@ import BudgetCard from "../Components/BudgetCard";
 import FilterBarBudget from "../Components/FilterBarBudget";
 import SearchBar from "../Components/SearchBar"; // Make sure to import SearchBar
 
-const API_URL = "https://localhost:5005";
+const API_URL = "https://finalproject-hr-server.onrender.com";
 
 function BudgetsMainPage() {
   const [budgets, setBudgets] = useState([]);
