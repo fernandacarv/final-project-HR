@@ -21,7 +21,9 @@ function CreateFormBudget() {
   } = useContext(BudgetForm);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className=""
+      onSubmit={handleSubmit}>
       <BudgetInfo onChange={handleSubmit} />
       <ExpenseCategories onChange={handleSubmit} />
       <button type="submit">Submit</button>

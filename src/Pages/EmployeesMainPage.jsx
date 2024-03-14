@@ -5,7 +5,6 @@ import EmployeeCard from "../Components/EmployeeCard";
 import SearchBar from "../Components/SearchBar";
 import { Link } from "react-router-dom";
 
-// Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL ="https://finalproject-hr-server.onrender.com";
 
 // ... (import statements)
