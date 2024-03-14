@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/auth.context";
 
-const API_URL ="https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
