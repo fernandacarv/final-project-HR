@@ -12,6 +12,7 @@ const UserPage = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
+      <div className="h-90 card w-96 bg-base-100 shadow-xl">
       {userDetails ? (
         <div className="text-center">
           <h2 className="text-lg">User Details</h2>
@@ -26,6 +27,7 @@ const UserPage = () => {
       ) : (
         <p>Loading user details...</p>
       )}
+      </div>
     </div>
   );
 };

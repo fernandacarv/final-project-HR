@@ -6,7 +6,7 @@ import SearchBar from "../Components/SearchBar";
 import { Link } from "react-router-dom";
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "http://localhost:5005" || "https://finalproject-hr-server.onrender.com";
 
 // ... (import statements)
 

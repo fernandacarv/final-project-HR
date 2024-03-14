@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import userLog from "../images/userLog.png";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL =
+  "http://localhost:5005" || "https://finalproject-hr-server.onrender.com";
 export default function EmployeeDetailsPage() {
   const [employee, setEmployee] = useState({});
   const { id } = useParams();
@@ -41,12 +43,12 @@ export default function EmployeeDetailsPage() {
 
   return (
     <div className="flex items-center justify-center h-full p-6">
-      <div className="max-w-6xl bg-white w-full rounded-lg shadow-xl p-6">
+      <div className="max-w-6xl bg-gray-200 w-full rounded-lg shadow-xl p-6">
         <div className="md:flex md:flex-row">
           <div className="md:w-1/2">
             {/* Left side with the image */}
             <img
-              src={employee.imageUrl}
+              src={employee.imageUrl || userLog}
               alt="Employee"
               className="w-full h-auto rounded-l-lg md:rounded-l-none md:rounded-t-lg"
             />
@@ -55,27 +57,27 @@ export default function EmployeeDetailsPage() {
             {/* Right side with the employee information */}
             <div className="p-4 border-b">
               <h2 className="text-2xl">Employee Information</h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-600">
                 Personal details and job information.
               </p>
             </div>
             <div>
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                 <p className="text-gray-600">Full Name</p>
                 <p>{`${employee.firstName || ""} ${
                   employee.lastName || ""
                 }`}</p>
               </div>
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                 <p className="text-gray-600">Date of Birth</p>
                 <p>{employee.dateOfBirth || "N/A"}</p>
               </div>
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                 <p className="text-gray-600">Gender</p>
                 <p>{employee.gender || "N/A"}</p>
               </div>
               {/* Job Details */}
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                 <p className="text-gray-600">Job Title</p>
                 <p>
                   {employee.jobDetails ? employee.jobDetails.jobTitle : "N/A"}
@@ -90,7 +92,7 @@ export default function EmployeeDetailsPage() {
             {showMoreInfo && (
               <div>
                 {/* Additional information */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                   <p className="text-gray-600">Address</p>
                   <p>
                     {`${employee.address.streetAddress || ""}, ${
@@ -101,7 +103,7 @@ export default function EmployeeDetailsPage() {
                   </p>
                 </div>
                 {/* Emergency Contact */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                   <p className="text-gray-600">Emergency Contact</p>
                   <p>
                     {employee.emergencyContact
@@ -110,7 +112,7 @@ export default function EmployeeDetailsPage() {
                   </p>
                 </div>
                 {/* Skills and Qualifications */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                   <p className="text-gray-600">Skills and Qualifications</p>
                   <p>
                     {employee.skillsAndQualifications
@@ -119,7 +121,7 @@ export default function EmployeeDetailsPage() {
                   </p>
                 </div>
                 {/* Performance Metrics */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
                   <p className="text-gray-600">Performance Metrics</p>
                   <p>
                     {employee.performanceMetrics

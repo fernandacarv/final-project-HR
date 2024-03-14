@@ -7,15 +7,19 @@ function MainPage() {
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Half with Existing Content */}
       <section className="bg-gray-900 text-white lg:w-1/2 p-8">
-        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+        <div className="mx-auto max-w-screen-xl px-4 py-28 lg:flex lg:h-screen lg:items-center">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-              Understand User Flow.
-              <span className="sm:block"> Increase Conversion. </span>
+            <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl mb-3 p-4">
+              Empower your business with Iron Workflow.
+              <span className="sm:block">
+                {" "}
+                Your solution for seamless operations and unparalleled
+                efficiency{" "}
+              </span>
             </h1>
-            <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              illo tenetur fuga ducimus numquam ea!
+            <p className="mx-auto max-w-xl sm:text-xl/relaxed">
+              Iron Workflow streamlines HR and budget management processes with
+              intuitive software solutions tailored to your company's needs.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a

@@ -1,10 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-// import ProfileSetup from "./Employees-form/Profile-Setup";
-import {
-  BudgetForm,
-  BudgetFormProviderWrapper,
-} from "../Context/budget.context";
+import { BudgetForm } from "../Context/budget.context";
 import ExpenseCategories from "./Budget-form/ExpenseCategories";
 import ActualAmounts from "./Budget-form/ActualAmounts";
 import BudgetAmounts from "./Budget-form/BudgetAmounts";
@@ -20,10 +15,12 @@ function EditFormBudget() {
     step,
     setStep,
   } = useContext(BudgetForm);
+
   const [activeStep, setActiveStep] = useState(1);
 
-  const handleOnClick = (e) => {
-    setStep(parseInt(e.target.value));
+  const handleOnClick = (e, stepNumber) => {
+    setStep(stepNumber);
+    setActiveStep(stepNumber);
   };
 
   const renderStep = () => {
@@ -45,35 +42,47 @@ function EditFormBudget() {
     <div className="flex flex-row justify-center align-center p-6">
       <section className="flex flex-col p-16 bg-gray-900 steps steps-vertical w-auto rounded">
         <ul className="steps steps-vertical">
-          <li className="step step-primary">
+          <li
+            data-content={activeStep > 1 ? "✓" : "1"}
+            className={`step step-primary ${
+              activeStep > 1 ? "" : ""
+            }`}>
             <button
-              onClick={(e) => handleOnClick()}
-              value={1}
-              className="text-white hover:text-gray-300 mb-4">
+              onClick={(e) => handleOnClick(e, 1)}
+              className={`text-white hover:text-gray-300 mb-4 ${
+                activeStep === 1 ? "step-primary" : ""
+              }`}>
               Main Information
             </button>
           </li>
-          <li className="step step-primary">
+          <li 
+          data-content={activeStep > 2 ? "✓" : "2"}
+          className={`step ${activeStep >= 2 ? "step-primary" : ""}`}>
             <button
-              onClick={(e) => handleOnClick()}
-              value={2}
-              className="text-white hover:text-gray-300 mb-4">
+              onClick={(e) => handleOnClick(e, 2)}
+              className={`text-white hover:text-gray-300 mb-4 ${
+                activeStep === 2 ? "step-primary" : ""
+              }`}>
               Budget Amounts
             </button>
           </li>
-          <li className="step step-primary">
+          <li 
+          data-content={activeStep > 3 ? "✓" : "3"}
+          className={`step ${activeStep >= 3 ? "step-primary" : ""}`}>
             <button
-              onClick={(e) => handleOnClick()}
-              value={3}
-              className="text-white hover:text-gray-300 mb-4">
+              onClick={(e) => handleOnClick(e, 3)}
+              className={`text-white hover:text-gray-300 mb-4 ${
+                activeStep === 3 ? "step-pimary" : ""
+              }`}>
               Actual Amount
             </button>
           </li>
-          <li className="step step-primary">
+          <li className={`step  ${activeStep === 4 ? "step-primary" : ""}`}>
             <button
-              onClick={(e) => handleOnClick()}
-              value={4}
-              className="text-white hover:text-gray-300 mb-4">
+              onClick={(e) => handleOnClick(e, 4)}
+              className={`text-white hover:text-gray-300 mb-4 ${
+                activeStep === 4 ? "step-primary" : ""
+              }`}>
               Expenses
             </button>
           </li>
