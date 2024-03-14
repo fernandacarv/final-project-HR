@@ -17,12 +17,10 @@ const EmployeeCard = ({
   return (
     <Link to={`/employees/${id}`}>
       <div
-        className={`flex justify-between items-center p-2 border-b ${className}`}
-      >
+        className={`flex justify-between items-center p-2 border-b ${className}`}>
         <div
           className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
+          style={{ flexBasis: "20%" }}>
           <img
             src={imageUrl || userLog}
             alt={`${firstName} ${lastName}`}

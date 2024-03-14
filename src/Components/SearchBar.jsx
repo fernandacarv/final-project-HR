@@ -19,7 +19,7 @@ function SearchBar({ onSearch, suggestions }) {
   };
 
   return (
-    <div className="ml-4 relative flex items-center md:ml-6">
+    <div className="ml-4 relative flex items-center md:ml-6 rounded-md px-2 py-1 focus:ring-indigo-500 focus:border-indigo-500">
       <form>
         <input
           type="text"
@@ -30,7 +30,7 @@ function SearchBar({ onSearch, suggestions }) {
               e.preventDefault();
             }
           }}
-          className="bg-gray-200 focus:ring-indigo-500 focus:border-indigo-500 block w-64 px-4 py-2 rounded-md shadow-sm border-gray-300"
+          className="bg-gray-600 focus:ring-indigo-500 focus:border-indigo-500 block w-64 px-4 py-2 rounded-md shadow-sm border-gray-300 focus:outline-none focus:ring-"
           placeholder="Search"
         />
       </form>
@@ -40,8 +40,7 @@ function SearchBar({ onSearch, suggestions }) {
             <li
               key={index}
               className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              onClick={() => handleSuggestionClick(suggestion)}
-            >
+              onClick={() => handleSuggestionClick(suggestion)}>
               {suggestion}
             </li>
           ))}

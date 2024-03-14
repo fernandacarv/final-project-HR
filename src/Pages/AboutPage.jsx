@@ -2,7 +2,7 @@ import MateusCard from "../Components/devCards/MateusCard";
 import FernandaCard from "../Components/devCards/FernandaCard";
 function AboutPage() {
   return (
-    <div className="flex items-center  justify-around	">
+    <div className="flex items-center  justify-around	my-10">
       <div className="w-80 text-justify">
         <article className="text-4xl mt-16 mb-20">
           <b>Iron WorkFlow</b>

@@ -132,13 +132,17 @@ function JobDetails({ onNext, onBack, onChange }) {
           htmlFor="currency">
           Currency:
         </label>
-        <input
-          type="text"
+        <select
           name="salaryInformation.currency"
           value={formData.salaryInformation?.currency || ""}
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
-        />
+        >
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="JPY">JPY</option>
+        <option value="BRL">BRL</option>
+        </select>
         <label
           className="block mb-2"
           htmlFor="weeklyWorkHours">

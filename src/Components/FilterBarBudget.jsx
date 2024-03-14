@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://finalproject-hr-server.onrender.com";
 
 function FilterBarBudget({ onFilterChange }) {
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -38,25 +38,33 @@ function FilterBarBudget({ onFilterChange }) {
   }, [selectedStatus, selectedCurrency]);
 
   return (
-    <div>
-      <label>Select Status:</label>
-      <select onChange={(e) => setSelectedStatus(e.target.value)}>
-        <option value="">All Status</option>
-        <option value="Pending">Pending</option>
-        <option value="Approved">Approved</option>
-        <option value="Rejected">Rejected</option>
-      </select>
+    <div className="flex items-center">
+      <div className="mr-4">
+        <label>Select Status: </label>
+        <select
+          onChange={(e) => setSelectedStatus(e.target.value)}
+          className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="">All Status</option>
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
 
-      <label>Select Currency:</label>
-      <select onChange={(e) => setSelectedCurrency(e.target.value)}>
-        <option value="">Currency</option>
-        <option value="EUR">EUR</option>
-        <option value="USD">USD</option>
-        <option value="BRL">BRL</option>
-        <option value="JPY">JPY</option>
-      </select>
+      <div>
+        <label>Select Currency: </label>
+        <select
+          onChange={(e) => setSelectedCurrency(e.target.value)}
+          className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="">Currency</option>
+          <option value="EUR">EUR</option>
+          <option value="USD">USD</option>
+          <option value="BRL">BRL</option>
+          <option value="JPY">JPY</option>
+        </select>
+      </div>
 
-      {loading && <p>Loading...</p>}
+      {loading && <p className="ml-2">Loading...</p>}
     </div>
   );
 }

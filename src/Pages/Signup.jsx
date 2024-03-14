@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://finalproject-hr-server.onrender.com";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -56,7 +56,7 @@ function Signup() {
           id="name"
           value={name}
           onChange={handleName}
-          className="border rounded p-2 w-full mb-6 bg-gray-400"
+          className="border rounded p-2 w-full mb-6 bg-gray-200 text-black"
           autoComplete="off"
         />
         <label
@@ -70,7 +70,7 @@ function Signup() {
           id="email"
           value={email}
           onChange={handleEmail}
-          className="border rounded p-2 w-full mb-6 bg-gray-400"
+          className="border rounded p-2 w-full mb-6 bg-gray-200 text-black"
           autoComplete="off"
         />
 
@@ -85,7 +85,7 @@ function Signup() {
           id="password"
           value={password}
           onChange={handlePassword}
-          className="border rounded p-2 w-full mb-6 bg-gray-400"
+          className="border rounded p-2 w-full mb-6 bg-gray-200 text-black"
           autoComplete="off"
         />
 

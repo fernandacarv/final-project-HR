@@ -4,7 +4,7 @@ import BudgetCard from "../Components/BudgetCard";
 import FilterBarBudget from "../Components/FilterBarBudget";
 import SearchBar from "../Components/SearchBar"; // Make sure to import SearchBar
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://finalproject-hr-server.onrender.com";
 
 function BudgetsMainPage() {
   const [budgets, setBudgets] = useState([]);
@@ -51,35 +51,35 @@ function BudgetsMainPage() {
   useEffect(() => {}, [filteredBudgets]);
 
   return (
-      <div className="BudgetsMainPage">
-        <div className="flex justify-content">
-          <FilterBarBudget onFilterChange={handleFilterChange} />
-          <SearchBar
-            onSearch={handleSearch}
-            suggestions={suggestions}
-          />
-        </div>
-
-        <div className="flex justify-between items-center p-2 font-bold border-b">
-          <span
-            className="flex items-center justify-center"
-            style={{ flexBasis: "20%" }}>
-            Budget Name
-          </span>
-          <span style={{ flexBasis: "20%" }}>Start Date</span>
-          <span style={{ flexBasis: "20%" }}>End Date</span>
-          <span style={{ flexBasis: "20%" }}>Approval Status</span>
-          <span style={{ flexBasis: "20%" }}>Currency</span>
-        </div>
-
-        {filteredBudgets.map((budget, index) => (
-          <BudgetCard
-            key={budget._id}
-            {...budget}
-            className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
-          />
-        ))}
+    <div className="BudgetsMainPage">
+      <div className="flex justify-end items-center m-4 ">
+        <FilterBarBudget onFilterChange={handleFilterChange} />
+        <SearchBar
+          onSearch={handleSearch}
+          suggestions={suggestions}
+        />
       </div>
+
+      <div className="flex justify-between items-center p-2 font-bold border-b">
+        <span
+          className="flex items-center justify-center"
+          style={{ flexBasis: "20%" }}>
+          Budget Name
+        </span>
+        <span style={{ flexBasis: "20%" }}>Start Date</span>
+        <span style={{ flexBasis: "20%" }}>End Date</span>
+        <span style={{ flexBasis: "20%" }}>Approval Status</span>
+        <span style={{ flexBasis: "20%" }}>Currency</span>
+      </div>
+
+      {filteredBudgets.map((budget, index) => (
+        <BudgetCard
+          key={budget._id}
+          {...budget}
+          className={index % 2 === 0 ? "bg-slate-600" : "bg-slate-500"}
+        />
+      ))}
+    </div>
   );
 }
 

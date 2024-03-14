@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 // import ProfileSetup from "./Employees-form/Profile-Setup";
 import {
   BudgetForm,
@@ -13,8 +13,6 @@ import BudgetInfo from "./Budget-form/BudgetInfo";
 function EditFormBudget() {
   const {
     handleUpdate,
-    handleBack,
-    handleNext,
     handleBudgetsAmounts,
     handleActualAmounts,
     handleExpenseCategories,
@@ -22,6 +20,7 @@ function EditFormBudget() {
     step,
     setStep,
   } = useContext(BudgetForm);
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleOnClick = (e) => {
     setStep(parseInt(e.target.value));
@@ -43,25 +42,53 @@ function EditFormBudget() {
   };
 
   return (
-    <div>
-      <section className="flex-initial">
-        <button onClick={handleOnClick} value={1}>
-          Edit Main Info
-        </button>
-        <button onClick={handleOnClick} value={2}>
-          Budget Amounts
-        </button>
-        <button onClick={handleOnClick} value={3}>
-          Actual Amount
-        </button>
-        <button onClick={handleOnClick} value={4}>
-          Expenses
+    <div className="flex flex-row justify-center align-center p-6">
+      <section className="flex flex-col p-16 bg-gray-900 steps steps-vertical w-auto rounded">
+        <ul className="steps steps-vertical">
+          <li className="step step-primary">
+            <button
+              onClick={(e) => handleOnClick()}
+              value={1}
+              className="text-white hover:text-gray-300 mb-4">
+              Main Information
+            </button>
+          </li>
+          <li className="step step-primary">
+            <button
+              onClick={(e) => handleOnClick()}
+              value={2}
+              className="text-white hover:text-gray-300 mb-4">
+              Budget Amounts
+            </button>
+          </li>
+          <li className="step step-primary">
+            <button
+              onClick={(e) => handleOnClick()}
+              value={3}
+              className="text-white hover:text-gray-300 mb-4">
+              Actual Amount
+            </button>
+          </li>
+          <li className="step step-primary">
+            <button
+              onClick={(e) => handleOnClick()}
+              value={4}
+              className="text-white hover:text-gray-300 mb-4">
+              Expenses
+            </button>
+          </li>
+        </ul>
+        <button
+          onClick={handleUpdate}
+          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+          type="submit">
+          Edit
         </button>
       </section>
-
-      <form onSubmit={handleUpdate}>
+      <form
+        className="flex flex-row bg-gray-900"
+        onSubmit={handleUpdate}>
         {renderStep()}
-        <button type="submit">Edit</button>
       </form>
     </div>
   );

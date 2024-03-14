@@ -11,14 +11,14 @@ const UserPage = () => {
   }, [authenticateUser]);
 
   return (
-    <div>
+    <div className="flex justify-center items-center h-screen">
       {userDetails ? (
-        <div className="grid  justify-center">
-          <h2 className="text-lg text-justify">User Details</h2>
+        <div className="text-center">
+          <h2 className="text-lg">User Details</h2>
           <img
             src={userDetails.imageUrl || userLog}
             alt="user image"
-            className="h-60"
+            className="h-60 mx-auto"
           />
           <p>Email: {userDetails.email}</p>
           <p>Name: {userDetails.name}</p>

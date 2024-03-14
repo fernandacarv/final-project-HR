@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://finalproject-hr-server.onrender.com";
 export default function BudgetDetailsPage() {
   const [budget, setBudget] = useState({});
   const { id } = useParams();
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,6 +67,11 @@ export default function BudgetDetailsPage() {
             <li>
               <b>Approval Status:</b> {budget.approvalStatus}
             </li>
+            <button
+              onClick={() => setShowMoreInfo(!showMoreInfo)}
+              className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2">
+              {showMoreInfo ? "Hide More Info" : "Show More Info"}
+            </button>
             <li>
               <b>Income Categories:</b> <br />
               {budget.incomeCategories ? (
