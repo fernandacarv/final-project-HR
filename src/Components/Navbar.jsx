@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import userLog from "../images/userLog.png"; // Corrected import statement
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/auth.context";
 
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -24,34 +25,32 @@ const NavbarComponent = () => {
           <div className="flex items-center">
             <Link
               to="/"
-              className="flex-shrink-0 flex items-center text-white font-bold"
-            >
+              className="flex-shrink-0 flex items-center text-white font-bold">
               Navbar
             </Link>
             <div className="ml-10 space-x-4 flex flex-row">
               <Link
                 to="/"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3
-                py-2 rounded-md text-sm font-medium"
-              >
+                py-2 rounded-md text-sm font-medium">
                 Home
               </Link>
               <Link
                 to="/about"
                 className="hidden md:block text-gray-300 hover:bg-gray-700 hover:text-white px-3
-                py-2 rounded-md text-sm font-medium"
-              >
+                py-2 rounded-md text-sm font-medium">
                 Management
               </Link>
-              <div className="relative" ref={dropdownRef}>
+              <div
+                className="relative"
+                ref={dropdownRef}>
                 <button
                   onClick={toggleDropdown}
                   type="button"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   id="options-menu"
                   aria-expanded={showDropdown}
-                  aria-haspopup="true"
-                >
+                  aria-haspopup="true">
                   About Us
                 </button>
                 {showDropdown && (
@@ -59,28 +58,26 @@ const NavbarComponent = () => {
                     className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
                     role="menu"
                     aria-orientation="vertical"
-                    aria-labelledby="options-menu"
-                  >
-                    <div className="rounded border" role="none">
+                    aria-labelledby="options-menu">
+                    <div
+                      className="rounded border"
+                      role="none">
                       <a
                         href="#"
                         className="text-gray-700 hover:bg-gray-300 bg-white block px-4 py-2 text-sm"
-                        role="menuitem"
-                      >
+                        role="menuitem">
                         Action
                       </a>
                       <a
                         href="#"
                         className="text-gray-700  hover:bg-gray-300 block px-4 py-2 text-sm"
-                        role="menuitem"
-                      >
+                        role="menuitem">
                         Another action
                       </a>
                       <a
                         href="#"
                         className="text-gray-700  hover:bg-gray-300 block px-4 py-2 text-sm"
-                        role="menuitem"
-                      >
+                        role="menuitem">
                         Something else here
                       </a>
                     </div>
@@ -109,20 +106,17 @@ const NavbarComponent = () => {
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             to="/"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
             Home
           </Link>
           <Link
             to="/"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
             Link
           </Link>
           <Link
             to="/"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
             Disabled
           </Link>
         </div>
