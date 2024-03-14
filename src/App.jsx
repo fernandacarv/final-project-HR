@@ -17,33 +17,22 @@ import NotFoundPage from "./Pages/NotFoundPage";
 import EmployeesMainPage from "./Pages/EmployeesMainPage";
 import MainPage from "./Pages/MainPage";
 import AboutPage from "./Pages/AboutPage";
+import UserPage from "./Pages/UserPage";
+import { AuthProviderWrapper } from "./Context/auth.context";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <AuthProviderWrapper>
+        <Navbar />
+      </AuthProviderWrapper>
       <div className="flex-grow">
         <Routes>
-          <Route
-            path="/about"
-            element={<AboutPage />}
-          />
-          <Route
-            path="/"
-            element={<MainPage />}
-          />
-          <Route
-            path="/signup"
-            element={<Signup />}
-          />
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route
-            path="/employees"
-            element={<EmployeesMainPage />}
-          />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/employees" element={<EmployeesMainPage />} />
           <Route
             path="/newemployee"
             element={
@@ -52,10 +41,7 @@ function App() {
               </MainFormProviderWrapper>
             }
           />
-          <Route
-            path="/employees/:id"
-            element={<EmployeeDetailsPage />}
-          />
+          <Route path="/employees/:id" element={<EmployeeDetailsPage />} />
           <Route
             path="/employees/edit/:id"
             element={
@@ -72,14 +58,8 @@ function App() {
               </BudgetFormProviderWrapper>
             }
           />
-          <Route
-            path="/budgets"
-            element={<BudgetsMainPage />}
-          />
-          <Route
-            path="/budgets/:id"
-            element={<BudgetDetailsPage />}
-          />
+          <Route path="/budgets" element={<BudgetsMainPage />} />
+          <Route path="/budgets/:id" element={<BudgetDetailsPage />} />
           <Route
             path="/budgets/edit/:id"
             element={
@@ -89,9 +69,14 @@ function App() {
             }
           />
           <Route
-            path="*"
-            element={<NotFoundPage />}
+            path="/user"
+            element={
+              <AuthProviderWrapper>
+                <UserPage />
+              </AuthProviderWrapper>
+            }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
       <Footer />

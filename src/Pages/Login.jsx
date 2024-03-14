@@ -24,8 +24,6 @@ function LoginPage() {
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
-        console.log("JWT token", response.data.authToken);
-
         storeToken(response.data.authToken);
         authenticateUser();
         navigate("/");
@@ -42,14 +40,16 @@ function LoginPage() {
 
       <form
         onSubmit={handleLoginSubmit}
-        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4">
+        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
+      >
         <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
           Login
         </h3>
 
         <label
           htmlFor="email"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+        >
           Email
         </label>
         <input
@@ -64,7 +64,8 @@ function LoginPage() {
 
         <label
           htmlFor="password"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+        >
           Password
         </label>
         <input
@@ -79,7 +80,8 @@ function LoginPage() {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out">
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
+        >
           Log In
         </button>
       </form>

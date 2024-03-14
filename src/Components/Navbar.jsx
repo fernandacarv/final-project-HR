@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import userLog from "../images/userLog.png"; // Corrected import statement
+import { AuthContext } from "../Context/auth.context";
 
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const { user, authenticateUser } = useContext(AuthContext);
+  const [userDetails, setUserDetails] = useState(null);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  useEffect(() => {
+    setUserDetails(user);
+    console.log(user);
+  }, [user]);
 
   return (
     <nav className="bg-gray-900 shadow-lg">
@@ -79,8 +87,18 @@ const NavbarComponent = () => {
             </div>
           </div>
           <div className="flex items-center">
-            <img src={userLog} alt="Login Logo" className="w-8 h-8 mr-2" />
-            <span className="text-gray-300 font-medium">John Doe</span>
+            {userDetails && (
+              <>
+                <img
+                  src={userDetails.imageUrl || userLog}
+                  alt="Login Logo"
+                  className="w-8 h-8 mr-2"
+                />
+                <span className="text-gray-300 font-medium">
+                  {userDetails.name}
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>
