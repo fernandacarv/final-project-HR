@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const API_URL =
-  "http://localhost:5005" || "https://finalproject-hr-server.onrender.com";
+const API_URL ="https://finalproject-hr-server.onrender.com";
+
 export default function BudgetDetailsPage() {
   const [budget, setBudget] = useState({});
   const { id } = useParams();

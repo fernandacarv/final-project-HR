@@ -48,8 +48,8 @@ function BudgetInfo({ onChange }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800 p-6">
-      <div className="max-w-md w-full p-6 bg-gray-900 rounded-md shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900 p-6">
+      <div className="w-full p-6 bg-gray-900 rounded-md shadow-md">
         <h4 className="text-lg font-semibold mb-4">Budget Main Information</h4>
 
         <label

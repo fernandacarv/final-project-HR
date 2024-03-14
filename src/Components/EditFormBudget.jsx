@@ -40,13 +40,11 @@ function EditFormBudget() {
 
   return (
     <div className="flex flex-row justify-center align-center p-6">
-      <section className="flex flex-col p-16 bg-gray-900 steps steps-vertical w-auto rounded">
-        <ul className="steps steps-vertical">
-          <li
+      <section className="flex flex-col p-16 bg-gray-900 steps steps-vertical rounded">
+        <div className="steps steps-vertical">
+          <div
             data-content={activeStep > 1 ? "✓" : "1"}
-            className={`step step-primary ${
-              activeStep > 1 ? "" : ""
-            }`}>
+            className={`step step-primary ${activeStep > 1 ? "" : ""}`}>
             <button
               onClick={(e) => handleOnClick(e, 1)}
               className={`text-white hover:text-gray-300 mb-4 ${
@@ -54,10 +52,10 @@ function EditFormBudget() {
               }`}>
               Main Information
             </button>
-          </li>
-          <li 
-          data-content={activeStep > 2 ? "✓" : "2"}
-          className={`step ${activeStep >= 2 ? "step-primary" : ""}`}>
+          </div>
+          <div
+            data-content={activeStep > 2 ? "✓" : "2"}
+            className={`step ${activeStep >= 2 ? "step-primary" : ""}`}>
             <button
               onClick={(e) => handleOnClick(e, 2)}
               className={`text-white hover:text-gray-300 mb-4 ${
@@ -65,10 +63,10 @@ function EditFormBudget() {
               }`}>
               Budget Amounts
             </button>
-          </li>
-          <li 
-          data-content={activeStep > 3 ? "✓" : "3"}
-          className={`step ${activeStep >= 3 ? "step-primary" : ""}`}>
+          </div>
+          <div
+            data-content={activeStep > 3 ? "✓" : "3"}
+            className={`step ${activeStep >= 3 ? "step-primary" : ""}`}>
             <button
               onClick={(e) => handleOnClick(e, 3)}
               className={`text-white hover:text-gray-300 mb-4 ${
@@ -76,8 +74,8 @@ function EditFormBudget() {
               }`}>
               Actual Amount
             </button>
-          </li>
-          <li className={`step  ${activeStep === 4 ? "step-primary" : ""}`}>
+          </div>
+          <div className={`step  ${activeStep === 4 ? "step-primary" : ""}`}>
             <button
               onClick={(e) => handleOnClick(e, 4)}
               className={`text-white hover:text-gray-300 mb-4 ${
@@ -85,8 +83,8 @@ function EditFormBudget() {
               }`}>
               Expenses
             </button>
-          </li>
-        </ul>
+          </div>
+        </div>
         <button
           onClick={handleUpdate}
           className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
