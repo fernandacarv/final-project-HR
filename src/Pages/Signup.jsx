@@ -41,13 +41,15 @@ function Signup() {
       {/* Increased max-width to max-w-2xl */}
       <form
         onSubmit={handleSignupSubmit}
-        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4">
+        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
+      >
         <h3 className="text-2xl font-semibold text-white mb-6 sticky left-0">
           Sign Up
         </h3>
         <label
           htmlFor="name"
-          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold"
+        >
           Name
         </label>
         <input
@@ -61,7 +63,8 @@ function Signup() {
         />
         <label
           htmlFor="email"
-          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold"
+        >
           Email
         </label>
         <input
@@ -76,7 +79,8 @@ function Signup() {
 
         <label
           htmlFor="password"
-          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
+          className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold"
+        >
           Password
         </label>
         <input
@@ -91,7 +95,8 @@ function Signup() {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out">
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
+        >
           Create Account
         </button>
       </form>
@@ -99,7 +104,8 @@ function Signup() {
       <p className="mt-10 mb-2">Already have an account?</p>
       <Link
         to={"/login"}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out w-1/4 flex justify-center">
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out w-1/4 flex justify-center"
+      >
         Log in
       </Link>
     </div>

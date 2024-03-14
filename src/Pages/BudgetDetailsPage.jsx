@@ -69,13 +69,15 @@ export default function BudgetDetailsPage() {
               </div>
               <button
                 onClick={() => setShowMoreInfo(!showMoreInfo)}
-                className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2">
+                className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2"
+              >
                 {showMoreInfo ? "Hide More Info" : "Show More Info"}
               </button>
               <article>
                 <Link
                   to="/budgets"
-                  className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">
+                  className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
+                >
                   &larr; Back
                 </Link>
                 <Link to={`/budgets/edit/${budget._id}`}>
@@ -85,7 +87,8 @@ export default function BudgetDetailsPage() {
                 </Link>
                 <button
                   onClick={handleDelete}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow ml-4">
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow ml-4"
+                >
                   Delete Budget
                 </button>
               </article>

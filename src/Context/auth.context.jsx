@@ -80,7 +80,8 @@ function AuthProviderWrapper(props) {
         authenticateUser,
         logOutUser,
         authError,
-      }}>
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

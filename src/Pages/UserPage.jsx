@@ -13,20 +13,20 @@ const UserPage = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="h-90 card w-96 bg-base-100 shadow-xl">
-      {userDetails ? (
-        <div className="text-center">
-          <h2 className="text-lg">User Details</h2>
-          <img
-            src={userDetails.imageUrl || userLog}
-            alt="user image"
-            className="h-60 mx-auto"
-          />
-          <p>Email: {userDetails.email}</p>
-          <p>Name: {userDetails.name}</p>
-        </div>
-      ) : (
-        <p>Loading user details...</p>
-      )}
+        {userDetails ? (
+          <div className="text-center">
+            <h2 className="text-lg">Bem Vindo {userDetails.name} !</h2>
+            <img
+              src={userDetails.imageUrl || userLog}
+              alt="user image"
+              className="h-60 mx-auto"
+            />
+            <p>Name: {userDetails.name}</p>
+            <p>Email: {userDetails.email}</p>
+          </div>
+        ) : (
+          <p>Loading user details...</p>
+        )}
       </div>
     </div>
   );

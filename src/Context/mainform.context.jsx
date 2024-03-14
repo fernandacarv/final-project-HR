@@ -182,7 +182,8 @@ function MainFormProviderWrapper(props) {
         handleNext,
         id,
         uploadFile,
-      }}>
+      }}
+    >
       {props.children}
     </MainForm.Provider>
   );

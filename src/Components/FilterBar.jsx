@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const API_URL = "https://finalproject-hr-server.onrender.com";
+/* "https://finalproject-hr-server.onrender.com" */
 
 const FilterBar = ({ onFilterChange }) => {
   const [selectedDepartment, setSelectedDepartment] = useState("");
@@ -37,7 +38,8 @@ const FilterBar = ({ onFilterChange }) => {
       <label className="mr-2">Select Department:</label>
       <select
         onChange={(e) => setSelectedDepartment(e.target.value)}
-        className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      >
         <option value="">All Departments</option>
         <option value="Web Development">Web Development</option>
         <option value="Financing">Financing</option>

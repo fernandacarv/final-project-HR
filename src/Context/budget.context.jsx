@@ -190,7 +190,8 @@ function BudgetFormProviderWrapper(props) {
         handleUpdate: handleRequest("PUT"),
         handleBack,
         handleNext,
-      }}>
+      }}
+    >
       {props.children}
     </BudgetForm.Provider>
   );
