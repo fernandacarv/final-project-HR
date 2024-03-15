@@ -3,6 +3,7 @@ import axios from "axios";
 import BudgetCard from "../Components/BudgetCard";
 import FilterBarBudget from "../Components/FilterBarBudget";
 import SearchBar from "../Components/SearchBar"; // Make sure to import SearchBar
+import { Link } from "react-router-dom";
 
 const API_URL = "https://finalproject-hr-server.onrender.com";
 
@@ -53,6 +54,11 @@ function BudgetsMainPage() {
   return (
     <div className="BudgetsMainPage">
       <div className="flex justify-end items-center m-4 ">
+        <Link to="/newbudget">
+          <button className=" rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-success-3 transition duration-150 ease-in-out hover:bg-success-accent-300 hover:shadow-success-2 focus:bg-success-accent-300 focus:shadow-success-2 focus:outline-none focus:ring-0 active:bg-success-600 active:shadow-success-2 motion-reduce:transition-none dark:focus:shadow-dark-strong dark:active:shadow-dark-strong mx-4 self-start">
+            New Budget
+          </button>
+        </Link>
         <FilterBarBudget onFilterChange={handleFilterChange} />
         <SearchBar onSearch={handleSearch} suggestions={suggestions} />
       </div>

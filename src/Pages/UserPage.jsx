@@ -15,7 +15,7 @@ const UserPage = () => {
       <div className="h-90 card w-96 bg-base-100 shadow-xl">
         {userDetails ? (
           <div className="text-center">
-            <h2 className="text-lg">Bem Vindo {userDetails.name} !</h2>
+            <h2 className="text-lg">Welcome {userDetails.name} !</h2>
             <img
               src={userDetails.imageUrl || userLog}
               alt="user image"
