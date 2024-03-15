@@ -5,7 +5,8 @@ import { AuthContext } from "../Context/auth.context";
 
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const { user, logOutUser } = useContext(AuthContext);
+  const { user, logOutUser, isLoggedIn, setIsLoggedIn } =
+    useContext(AuthContext);
   const [userDetails, setUserDetails] = useState(null);
   const dropdownRef = useRef(null);
 
@@ -15,7 +16,20 @@ const NavbarComponent = () => {
 
   const handleLogout = () => {
     logOutUser();
+    setIsLoggedIn(false); // Ensure isLoggedIn state is updated on logout
+    setUserDetails(null);
   };
+
+  useEffect(() => {
+    if (user) {
+      // Set user details when user is available
+      setUserDetails(user);
+      setIsLoggedIn(true);
+    } else {
+      setUserDetails(null); // Clear userDetails when user is not available
+      setIsLoggedIn(false);
+    }
+  }, [user, setIsLoggedIn]);
 
   useEffect(() => {
     setUserDetails(user);
@@ -30,7 +44,11 @@ const NavbarComponent = () => {
     return () => {
       document.body.removeEventListener("click", handleOutsideClick);
     };
-  }, [user]);
+  }, []);
+
+  useEffect(() => {
+    setUserDetails(user);
+  }, [user, isLoggedIn]);
 
   return (
     <nav className="bg-gray-900 shadow-lg">

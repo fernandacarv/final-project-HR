@@ -52,9 +52,7 @@ function PersonalInfo({ onNext, onChange }) {
     <div className="flex justify-center items-center min-h-screen bg-gray-800 p-6">
       <div className="max-w-md w-full p-6 bg-gray-900 rounded-md shadow-md">
         <h4 className="text-lg font-semibold mb-4">Personal Information</h4>
-        <label
-          className="block mb-2"
-          htmlFor="firstName">
+        <label className="block mb-2" htmlFor="firstName">
           First Name:
         </label>
         <input
@@ -65,9 +63,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="lastName">
+        <label className="block mb-2" htmlFor="lastName">
           Last Name:
         </label>
         <input
@@ -77,9 +73,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="email">
+        <label className="block mb-2" htmlFor="email">
           Email:
         </label>
         <input
@@ -89,9 +83,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="dateOfBirth">
+        <label className="block mb-2" htmlFor="dateOfBirth">
           Date of Birth:
         </label>
         <input
@@ -101,9 +93,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="gender">
+        <label className="block mb-2" htmlFor="gender">
           Gender:
         </label>
         <input
@@ -113,9 +103,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="phoneNumber">
+        <label className="block mb-2" htmlFor="phoneNumber">
           Phone Number:
         </label>
         <input
@@ -125,9 +113,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="streetAddress">
+        <label className="block mb-2" htmlFor="streetAddress">
           Street Address:
         </label>
         <input
@@ -138,9 +124,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="city">
+        <label className="block mb-2" htmlFor="city">
           City:
         </label>
         <input
@@ -151,9 +135,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="stateProvince">
+        <label className="block mb-2" htmlFor="stateProvince">
           State Province:
         </label>
         <input
@@ -163,9 +145,7 @@ function PersonalInfo({ onNext, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="postalCode">
+        <label className="block mb-2" htmlFor="postalCode">
           Postal Code:
         </label>
         <input
@@ -176,11 +156,11 @@ function PersonalInfo({ onNext, onChange }) {
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
 
-        <button
+        {/*         <button
           onClick={handleNext}
           className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
           Next: Profile Setup
-        </button>
+        </button> */}
       </div>
     </div>
   );

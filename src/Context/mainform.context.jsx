@@ -171,6 +171,7 @@ function MainFormProviderWrapper(props) {
         formData,
         setFormData,
         step,
+        setStep,
         handleProfileChange,
         handleJobDetailsChange,
         handleSkillsChange,

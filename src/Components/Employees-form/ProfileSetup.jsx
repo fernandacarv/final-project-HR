@@ -77,9 +77,7 @@ function ProfileSetup({ onChange, onNext, onBack }) {
     <div className="flex justify-center items-center min-h-screen bg-gray-800 p-6">
       <div className="max-w-md w-full p-6 bg-gray-900 rounded-md shadow-md">
         <h4 className="text-lg font-semibold mb-4">Profile Setup</h4>
-        <label
-          className="block mb-2"
-          htmlFor="imageUrl">
+        <label className="block mb-2" htmlFor="imageUrl">
           Upload Profile Picture
         </label>
         <input
@@ -90,18 +88,14 @@ function ProfileSetup({ onChange, onNext, onBack }) {
           className="mb-4"
         />
         {imageUrl && (
-          <img
-            src={imageUrl}
-            alt="my cloudinary image"
-            className="mb-4"
-          />
+          <img src={imageUrl} alt="my cloudinary image" className="mb-4" />
         )}
         <div>
-          <button
+          {/*           <button
             onClick={handleBack}
             className="bg-gray-500 text-white hover:bg-gray-600 px-4 py-2 rounded mr-2">
             Go back
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

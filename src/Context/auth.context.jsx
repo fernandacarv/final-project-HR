@@ -75,6 +75,7 @@ function AuthProviderWrapper(props) {
       value={{
         isLoggedIn,
         isLoading,
+        setIsLoggedIn,
         user,
         storeToken,
         authenticateUser,

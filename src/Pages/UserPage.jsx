@@ -12,7 +12,7 @@ const UserPage = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="h-90 card w-96 bg-base-100 shadow-xl">
+      <div className="h-90 card w-96 bg-gray-700 shadow-xl">
         {userDetails ? (
           <div className="text-center">
             <h2 className="text-lg">Welcome {userDetails.name} !</h2>

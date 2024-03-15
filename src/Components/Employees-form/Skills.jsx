@@ -52,9 +52,7 @@ function Skills({ onChange, onBack, onNext }) {
         <h4 className="text-lg font-semibold mb-4">
           Skills & Performance Metrics
         </h4>
-        <label
-          className="block mb-2"
-          htmlFor="skills">
+        <label className="block mb-2" htmlFor="skills">
           Skills
         </label>
         <input
@@ -64,9 +62,7 @@ function Skills({ onChange, onBack, onNext }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="education">
+        <label className="block mb-2" htmlFor="education">
           Education
         </label>
         <input
@@ -76,9 +72,7 @@ function Skills({ onChange, onBack, onNext }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="performanceReviews">
+        <label className="block mb-2" htmlFor="performanceReviews">
           Performance Reviews
         </label>
         <input
@@ -88,9 +82,7 @@ function Skills({ onChange, onBack, onNext }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="goals">
+        <label className="block mb-2" htmlFor="goals">
           Goals
         </label>
         <input
@@ -100,7 +92,7 @@ function Skills({ onChange, onBack, onNext }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <button
+        {/*        <button
           onClick={handleBack}
           className="bg-gray-500 text-white hover:bg-gray-600 px-4 py-2 rounded mr-2">
           Go back
@@ -109,7 +101,7 @@ function Skills({ onChange, onBack, onNext }) {
           onClick={handleNext}
           className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
           Next: Profile Setup
-        </button>
+        </button> */}
       </div>
     </div>
   );

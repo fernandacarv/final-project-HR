@@ -49,9 +49,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
     <div className="flex justify-center items-center min-h-screen bg-gray-800 p-6">
       <div className="max-w-md w-full p-6 bg-gray-900 rounded-md shadow-md">
         <h4 className="text-lg font-semibold mb-4">Emergency Contact</h4>
-        <label
-          className="block mb-2"
-          htmlFor="EmergencyContactName">
+        <label className="block mb-2" htmlFor="EmergencyContactName">
           Name:
         </label>
         <input
@@ -61,9 +59,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="phoneNumber">
+        <label className="block mb-2" htmlFor="phoneNumber">
           Phone Number
         </label>
         <input
@@ -73,9 +69,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <label
-          className="block mb-2"
-          htmlFor="">
+        <label className="block mb-2" htmlFor="">
           Relationship:
         </label>
         <input
@@ -85,7 +79,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 bg-gray-100 text-black"
         />
-        <button
+        {/*   <button
           onClick={handleBack}
           className="bg-gray-500 text-white hover:bg-gray-600 px-4 py-2 rounded mr-2">
           Go back
@@ -94,7 +88,7 @@ function EmergencyContact({ onNext, onBack, onChange }) {
           onClick={handleNext}
           className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
           Next: Skills & Performance Metrics
-        </button>
+        </button> */}
       </div>
     </div>
   );

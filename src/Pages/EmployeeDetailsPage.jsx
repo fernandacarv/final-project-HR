@@ -62,22 +62,22 @@ export default function EmployeeDetailsPage() {
               </p>
             </div>
             <div>
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                 <p className="text-gray-600">Full Name</p>
                 <p>{`${employee.firstName || ""} ${
                   employee.lastName || ""
                 }`}</p>
               </div>
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                 <p className="text-gray-600">Date of Birth</p>
                 <p>{employee.dateOfBirth || "N/A"}</p>
               </div>
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                 <p className="text-gray-600">Gender</p>
                 <p>{employee.gender || "N/A"}</p>
               </div>
               {/* Job Details */}
-              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+              <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                 <p className="text-gray-600">Job Title</p>
                 <p>
                   {employee.jobDetails ? employee.jobDetails.jobTitle : "N/A"}
@@ -93,7 +93,7 @@ export default function EmployeeDetailsPage() {
             {showMoreInfo && (
               <div>
                 {/* Additional information */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                   <p className="text-gray-600">Address</p>
                   <p>
                     {`${employee.address.streetAddress || ""}, ${
@@ -104,7 +104,7 @@ export default function EmployeeDetailsPage() {
                   </p>
                 </div>
                 {/* Emergency Contact */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                   <p className="text-gray-600">Emergency Contact</p>
                   <p>
                     {employee.emergencyContact
@@ -113,7 +113,7 @@ export default function EmployeeDetailsPage() {
                   </p>
                 </div>
                 {/* Skills and Qualifications */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                   <p className="text-gray-600">Skills and Qualifications</p>
                   <p>
                     {employee.skillsAndQualifications
@@ -122,7 +122,7 @@ export default function EmployeeDetailsPage() {
                   </p>
                 </div>
                 {/* Performance Metrics */}
-                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300">
+                <div className="md:grid md:grid-cols-2 hover:bg-gray-100 md:space-y-0 space-y-1 p-4 border-b border-gray-300 text-gray-600">
                   <p className="text-gray-600">Performance Metrics</p>
                   <p>
                     {employee.performanceMetrics
