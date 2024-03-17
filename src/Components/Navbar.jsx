@@ -1,13 +1,11 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import userLog from "../images/userLog.png"; // Corrected import statement
+import userLog from "../images/userLog.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/auth.context";
 
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const { user, logOutUser, isLoggedIn, setIsLoggedIn } =
-    useContext(AuthContext);
-  const [userDetails, setUserDetails] = useState(null);
+  const { user, setUser, logOutUser, setIsLoggedIn } = useContext(AuthContext);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
@@ -16,23 +14,10 @@ const NavbarComponent = () => {
 
   const handleLogout = () => {
     logOutUser();
-    setIsLoggedIn(false); // Ensure isLoggedIn state is updated on logout
-    setUserDetails(null);
   };
 
   useEffect(() => {
-    if (user) {
-      // Set user details when user is available
-      setUserDetails(user);
-      setIsLoggedIn(true);
-    } else {
-      setUserDetails(null); // Clear userDetails when user is not available
-      setIsLoggedIn(false);
-    }
-  }, [user, setIsLoggedIn]);
-
-  useEffect(() => {
-    setUserDetails(user);
+    setIsLoggedIn(true);
     const handleOutsideClick = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowDropdown(false);
@@ -44,11 +29,7 @@ const NavbarComponent = () => {
     return () => {
       document.body.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
-
-  useEffect(() => {
-    setUserDetails(user);
-  }, [user, isLoggedIn]);
+  }, [user]);
 
   return (
     <nav className="bg-gray-900 shadow-lg">
@@ -71,7 +52,7 @@ const NavbarComponent = () => {
                 About Us
               </Link>
               <div className="relative" ref={dropdownRef}>
-                {userDetails && (
+                {user && user.name && (
                   <>
                     <button
                       onClick={toggleDropdown}
@@ -116,18 +97,18 @@ const NavbarComponent = () => {
             </div>
           </div>
           <div className="flex items-center">
-            {userDetails && (
+            {user ? (
               <>
                 <Link to="/user">
                   <img
-                    src={userDetails.imageUrl || userLog}
+                    src={user?.imageUrl || userLog}
                     alt="Login Logo"
                     className="w-8 h-8 mr-2"
                   />
                 </Link>
                 <Link to="/user">
                   <span className="text-gray-300 text-sm font-medium mr-6">
-                    {userDetails.name || "User"}
+                    {user?.name || "User"}
                   </span>
                 </Link>
                 <Link to="/">
@@ -139,6 +120,8 @@ const NavbarComponent = () => {
                   </button>
                 </Link>
               </>
+            ) : (
+              <img src={userLog} alt="Login Logo" className="w-8 h-8 mr-2" />
             )}
           </div>
         </div>

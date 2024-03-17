@@ -8,6 +8,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -15,11 +16,12 @@ function Signup() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+  const handleImageUrl = (e) => setImageUrl(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, imageUrl };
 
     // Make an axios request to the API
     // If POST request is successful redirect to login page

@@ -67,27 +67,29 @@ export default function BudgetDetailsPage() {
                 <br />
                 {budget.notesComments ?? "N/A"}
               </div>
-              <button
-                onClick={() => setShowMoreInfo(!showMoreInfo)}
-                className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2"
-              >
-                {showMoreInfo ? "Hide More Info" : "Show More Info"}
-              </button>
-              <article>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => setShowMoreInfo(!showMoreInfo)}
+                  className="self-center bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2"
+                >
+                  {showMoreInfo ? "Hide More Info" : "Show More Info"}
+                </button>
+              </div>
+              <article className="flex align-center content-between mt-4">
                 <Link
                   to="/budgets"
-                  className="inline-block mt-8 bg-white py-2 px-6 rounded shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
+                  className="btn btn-active text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
                 >
-                  &larr; Back
+                  Back
                 </Link>
                 <Link to={`/budgets/edit/${budget._id}`}>
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow ml-4">
+                  <button className="btn btn-active btn-primary hover:bg-blue-600 text-white px-4 py-2 rounded shadow ml-4">
                     Edit Budget
                   </button>
                 </Link>
                 <button
                   onClick={handleDelete}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow ml-4"
+                  className="btn btn-error hover:bg-red-600 text-white px-4 py-2 rounded shadow ml-4"
                 >
                   Delete Budget
                 </button>

@@ -48,7 +48,7 @@ const FilterBar = ({ onFilterChange }) => {
         <option value="Data Analytics">Data Analytics</option>
         <option value="Design">Design</option>
       </select>
-      {loading && <p className="ml-2">Loading...</p>}
+      {/* {loading && <p className="ml-2">Loading...</p>} */}
     </div>
   );
 };

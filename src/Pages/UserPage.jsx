@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import userLog from "../images/userLog.png";
 import { AuthContext } from "../Context/auth.context";
+import { Link } from "react-router-dom";
 
 const UserPage = () => {
   const { user, authenticateUser } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const UserPage = () => {
   }, [authenticateUser]);
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-screen">
       <div className="h-90 card w-96 bg-gray-700 shadow-xl">
         {userDetails ? (
           <div className="text-center">
@@ -27,6 +28,18 @@ const UserPage = () => {
         ) : (
           <p>Loading user details...</p>
         )}
+      </div>
+      <div className="mt-4 align-center content-around">
+        <Link to="/employees">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow ml-4">
+            Employees
+          </button>
+        </Link>
+        <Link to="/budgets">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow ml-4">
+            Budgets
+          </button>
+        </Link>
       </div>
     </div>
   );
