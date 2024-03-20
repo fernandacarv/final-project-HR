@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/auth.context";
 import { Link } from "react-router-dom";
 
 const UserPage = () => {
-  const { user, authenticateUser } = useContext(AuthContext);
+  const { user, authenticateUser, logOutUser } = useContext(AuthContext);
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
@@ -31,13 +31,20 @@ const UserPage = () => {
       </div>
       <div className="mt-4 align-center content-around">
         <Link to="/employees">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow ml-4">
+          <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded shadow ml-4">
             Employees
           </button>
         </Link>
         <Link to="/budgets">
           <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow ml-4">
             Budgets
+          </button>
+        </Link>
+      </div>
+      <div className="mt-4">
+        <Link to="/">
+          <button onClick={logOutUser} className="btn btn-outline btn-error">
+            Log Out
           </button>
         </Link>
       </div>
