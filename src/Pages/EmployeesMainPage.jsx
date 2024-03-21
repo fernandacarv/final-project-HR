@@ -5,7 +5,7 @@ import EmployeeCard from "../Components/EmployeeCard";
 import SearchBar from "../Components/SearchBar";
 import { Link } from "react-router-dom";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 // ... (import statements)
 
@@ -67,14 +67,16 @@ function EmployeesMainPage() {
           </button>
         </Link>
         <FilterBar onFilterChange={handleFilterChange} />
-        <SearchBar onSearch={handleSearch} suggestions={suggestions} />
+        <SearchBar
+          onSearch={handleSearch}
+          suggestions={suggestions}
+        />
       </div>
 
       <div className="flex justify-between items-center p-6 font-bold border-b">
         <span
           className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
+          style={{ flexBasis: "20%" }}>
           Image
         </span>
         <span style={{ flexBasis: "20%" }}>Name</span>

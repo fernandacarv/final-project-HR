@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 function FilterBarBudget({ onFilterChange }) {
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -43,8 +43,7 @@ function FilterBarBudget({ onFilterChange }) {
         <label>Select Status: </label>
         <select
           onChange={(e) => setSelectedStatus(e.target.value)}
-          className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
+          className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           <option value="">All Status</option>
           <option value="Pending">Pending</option>
           <option value="Approved">Approved</option>
@@ -56,8 +55,7 @@ function FilterBarBudget({ onFilterChange }) {
         <label>Select Currency: </label>
         <select
           onChange={(e) => setSelectedCurrency(e.target.value)}
-          className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
+          className="border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           <option value="">Currency</option>
           <option value="EUR">EUR</option>
           <option value="USD">USD</option>

@@ -5,7 +5,7 @@ import FilterBarBudget from "../Components/FilterBarBudget";
 import SearchBar from "../Components/SearchBar"; // Make sure to import SearchBar
 import { Link } from "react-router-dom";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 function BudgetsMainPage() {
   const [budgets, setBudgets] = useState([]);
@@ -65,14 +65,16 @@ function BudgetsMainPage() {
           </button>
         </Link>
         <FilterBarBudget onFilterChange={handleFilterChange} />
-        <SearchBar onSearch={handleSearch} suggestions={suggestions} />
+        <SearchBar
+          onSearch={handleSearch}
+          suggestions={suggestions}
+        />
       </div>
 
       <div className="flex justify-between items-center p-2 font-bold border-b">
         <span
           className="flex items-center justify-center"
-          style={{ flexBasis: "20%" }}
-        >
+          style={{ flexBasis: "20%" }}>
           Budget Name
         </span>
         <span style={{ flexBasis: "20%" }}>Start Date</span>

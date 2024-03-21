@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/auth.context";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -45,12 +45,10 @@ function LoginPage() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form
           onSubmit={handleLoginSubmit}
-          className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
-        >
+          className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4">
           <label
             htmlFor="email"
-            className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold"
-          >
+            className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
             Email address
           </label>
           <input
@@ -67,8 +65,7 @@ function LoginPage() {
           <div className="flex items-center justify-between">
             <label
               htmlFor="password"
-              className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold"
-            >
+              className="text-gray-200 text-left ml-1 -mb-2 text-l font-bold">
               Password
             </label>
             {/* <div className="text-sm">
@@ -93,8 +90,7 @@ function LoginPage() {
 
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
-          >
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out">
             Sign in
           </button>
         </form>

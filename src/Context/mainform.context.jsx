@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 const MainForm = React.createContext();
 const defaultValues = {
@@ -183,8 +183,7 @@ function MainFormProviderWrapper(props) {
         handleNext,
         id,
         uploadFile,
-      }}
-    >
+      }}>
       {props.children}
     </MainForm.Provider>
   );

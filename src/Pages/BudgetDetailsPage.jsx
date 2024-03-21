@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 export default function BudgetDetailsPage() {
   const [budget, setBudget] = useState({});
@@ -70,16 +70,14 @@ export default function BudgetDetailsPage() {
               <div className="flex justify-center">
                 <button
                   onClick={() => setShowMoreInfo(!showMoreInfo)}
-                  className="self-center bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2"
-                >
+                  className="self-center bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2">
                   {showMoreInfo ? "Hide More Info" : "Show More Info"}
                 </button>
               </div>
               <article className="flex align-center content-between mt-4">
                 <Link
                   to="/budgets"
-                  className="btn btn-active text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400"
-                >
+                  className="btn btn-active text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400">
                   Back
                 </Link>
                 <Link to={`/budgets/edit/${budget._id}`}>
@@ -89,8 +87,7 @@ export default function BudgetDetailsPage() {
                 </Link>
                 <button
                   onClick={handleDelete}
-                  className="btn btn-error hover:bg-red-600 text-white px-4 py-2 rounded shadow ml-4"
-                >
+                  className="btn btn-error hover:bg-red-600 text-white px-4 py-2 rounded shadow ml-4">
                   Delete Budget
                 </button>
               </article>

@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import userLog from "../images/userLog.png";
 
-const API_URL = "https://finalproject-hr-server.onrender.com";
+const API_URL = "https://localhost:5005";
 
 export default function EmployeeDetailsPage() {
   const [employee, setEmployee] = useState({});
@@ -86,8 +86,7 @@ export default function EmployeeDetailsPage() {
             </div>
             <button
               onClick={() => setShowMoreInfo(!showMoreInfo)}
-              className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2"
-            >
+              className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4 mt-2">
               {showMoreInfo ? "Hide More Info" : "Show More Info"}
             </button>
             {showMoreInfo && (
@@ -135,20 +134,17 @@ export default function EmployeeDetailsPage() {
             <div className="flex items-center mt-8">
               <Link
                 to="/employees"
-                className="inline-block bg-white py-2 px-6 rounded font-semibold shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400 ml-4"
-              >
+                className="inline-block bg-white py-2 px-6 rounded font-semibold shadow text-gray-700 hover:bg-gray-200 transition-all duration-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400 ml-4">
                 &larr; Back
               </Link>
               <Link
                 to={`/employees/edit/${id}`}
-                className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4"
-              >
+                className="inline-block bg-blue-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-blue-600 transition-all duration-200 ml-4">
                 Edit Employee
               </Link>
               <button
                 onClick={handleDelete}
-                className="bg-red-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-red-600 transition-all duration-200 ml-4"
-              >
+                className="bg-red-500 px-6 py-2 text-white font-semibold rounded shadow hover:bg-red-600 transition-all duration-200 ml-4">
                 Delete Employee
               </button>
             </div>
