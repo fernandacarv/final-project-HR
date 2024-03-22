@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import userLog from "../images/userLog.png";
 
-const API_URL = "https://localhost:5005";
+const API_URL = "https://finalproject-hr-server.onrender.com";
 
 export default function EmployeeDetailsPage() {
   const [employee, setEmployee] = useState({});
